@@ -11,6 +11,8 @@
         <item>Value is less than 1. Make the change!</item>
         <item>Value is greater than 10. Make the change!</item>
         <item>Valid input.</item>
+        <item>You WIN!</item>
+        <item>You Lose! Try again.</item>
     </string-array>
 
 </resources>

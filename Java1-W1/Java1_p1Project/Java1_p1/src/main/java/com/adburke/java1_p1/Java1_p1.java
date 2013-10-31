@@ -22,7 +22,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Java1_p1 extends Activity {
+
+    // Testing out logging
+    final String TAG = "GuessGame";
+
+    // Holds results of tries
+    final List<List<Integer>> gameResults = new ArrayList<List<Integer>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +82,15 @@ public class Java1_p1 extends Activity {
             @Override
             public void onClick(View v) {
                 int val = Integer.parseInt(inputTxt.getText().toString());
-                checkInput(val);
+                boolean result = checkInput(val);
+
+                if (result) {
+                    msgText.setText(messages[4]);
+
+                } else {
+                    msgText.setText(messages[5]);
+                    
+                }
             }
         });
 
@@ -126,12 +144,30 @@ public class Java1_p1 extends Activity {
         setContentView(projectLayout);
     }
 
-    // Testing out logging
-    private static final String TAG = "GuessGame";
-
+    // Compare input function
     public boolean checkInput(int x) {
         Log.i(TAG, "x = " + x);
-        return true;
+
+        // Create our random number on each try
+        Random randomNumber = new Random();
+        int actualNum = randomNumber.nextInt((10 - 1) + 1) + 1;
+        Log.i(TAG, "actual = " + actualNum);
+
+        Log.i(TAG, "gameResults rows = " + gameResults.size());
+
+        // Check the arrayList size to increment the 2D row with new guess and actual values
+        int size = gameResults.size();
+
+        gameResults.add(new ArrayList<Integer>());
+        gameResults.get(size).add(x);
+        gameResults.get(size).add(actualNum);
+
+        if (x == actualNum) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }
