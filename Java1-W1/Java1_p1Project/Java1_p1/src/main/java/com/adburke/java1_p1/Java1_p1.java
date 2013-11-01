@@ -32,7 +32,7 @@ import java.util.Random;
 public class Java1_p1 extends Activity {
 
     // Testing out logging
-    final String TAG = "GuessGame";
+    //final String TAG = "GuessGame";
 
     // Holds results of tries in a 2D List format: [[guess,actual,win/loss(0 or 1)],[guess,actual,win/loss(0 or 1)]]
     final List<List<Integer>> gameResults = new ArrayList<List<Integer>>();
