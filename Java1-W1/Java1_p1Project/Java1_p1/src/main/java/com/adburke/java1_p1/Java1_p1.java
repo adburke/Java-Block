@@ -158,15 +158,15 @@ public class Java1_p1 extends Activity {
 
     // Compare input function
     public boolean checkInput(int x) {
-        Log.i(TAG, "x = " + x);
+        //Log.i(TAG, "x = " + x);
 
         // Create our random number on each try
         Random randomNumber = new Random();
         int actualNum = randomNumber.nextInt((10 - 1) + 1) + 1;
-        Log.i(TAG, "actual = " + actualNum);
+        //Log.i(TAG, "actual = " + actualNum);
 
         // Check the arrayList size to increment the 2D row with new guess and actual values
-        Log.i(TAG, "gameResults rows = " + gameResults.size());
+        //Log.i(TAG, "gameResults rows = " + gameResults.size());
         int size = gameResults.size();
         gameResults.add(new ArrayList<Integer>());
         gameResults.get(size).add(x);
@@ -188,11 +188,11 @@ public class Java1_p1 extends Activity {
         int size = gameResults.size();
 
         for (int i = size - 1, j = size; i < j; i++) {
-            String newstring =  " \n" + "Guess: " + gameResults.get(i).get(0) + " Actual: " + gameResults.get(i).get(1);
+            String newString =  " \n" + "Guess: " + gameResults.get(i).get(0) + " Actual: " + gameResults.get(i).get(1);
             if (gameResults.get(i).get(2) == 0) {
-                appendColoredText(txtView, newstring, Color.RED);
+                appendColoredText(txtView, newString, Color.RED);
             } else {
-                appendColoredText(txtView, newstring, Color.GREEN);
+                appendColoredText(txtView, newString, Color.GREEN);
             }
         }
     }
