@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Java1_Final</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_text">Input a search term:</string>
+    <string name="btn_text">Search</string>
+
+</resources>
