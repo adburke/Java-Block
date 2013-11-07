@@ -22,6 +22,7 @@ import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.util.Log;
 
@@ -42,7 +43,7 @@ public class DataPull extends Activity {
         testText.setLayoutParams(lp);
         testText.setText(R.string.main_text);
 
-        testText.setGravity(Gravity.CENTER);
+        testText.setGravity(Gravity.LEFT);
         projectLayout.addView(testText);
 
         // EditText
@@ -59,8 +60,10 @@ public class DataPull extends Activity {
         final Button btn = new Button(this);
         btn.setLayoutParams(lp);
         btn.setText(R.string.btn_text);
-        btn.setEnabled(false);
         projectLayout.addView(btn);
+
+        // List View
+        ListView listView = new ListView(mContext);
 
 
 
