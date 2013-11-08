@@ -63,7 +63,7 @@ public class JsonRequest {
 
         try {
             JSONArray results = dataResults.getJSONArray("results");
-
+            // Filter out results to only use what matches selected
             int j = results.length();
             for (int i = 0; i < j; i++) {
                 if (results.getJSONObject(i).getString("name").equals(selected)) {
