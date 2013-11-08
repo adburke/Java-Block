@@ -1,35 +1,18 @@
 package com.adburke.java1_final;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
-import android.text.InputFilter;
-import android.text.Spannable;
-import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.util.Log;
 import android.widget.Toast;
+
+import com.adburke.java1_final.json.JsonRequest;
 
 
 public class DataPull extends Activity {

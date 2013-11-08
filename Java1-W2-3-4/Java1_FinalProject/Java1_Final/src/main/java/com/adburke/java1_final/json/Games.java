@@ -1,4 +1,4 @@
-package com.adburke.java1_final;
+package com.adburke.java1_final.json;
 
 /**
  * Created by aaronburke on 11/7/13.

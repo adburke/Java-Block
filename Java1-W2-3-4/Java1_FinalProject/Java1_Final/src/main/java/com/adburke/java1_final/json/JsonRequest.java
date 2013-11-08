@@ -1,12 +1,10 @@
-package com.adburke.java1_final;
+package com.adburke.java1_final.json;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
 
 /**
  * Created by aaronburke on 11/7/13.
