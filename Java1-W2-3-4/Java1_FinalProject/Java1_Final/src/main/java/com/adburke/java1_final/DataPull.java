@@ -3,6 +3,7 @@ package com.adburke.java1_final;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,9 +15,14 @@ import android.widget.Toast;
 
 import com.adburke.java1_final.json.JsonRequest;
 
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 public class DataPull extends Activity {
-
+    static final String TAG = "DataPull";
     Context mContext;
     String[] mListItems;
 
@@ -63,6 +69,16 @@ public class DataPull extends Activity {
                     Toast.makeText(mContext, "You have selected " + mListItems[position], Toast.LENGTH_LONG).show();
 
                     String gameInfo = JsonRequest.readJSON(mListItems[position]);
+
+                    URL testUrl = null;
+                    String search = "http://www.giantbomb.com/api/search/?api_key=28bce6b74edc15b89a33b0bb61d7434c3a11f6bb&format=json";
+                    try {
+                        testUrl = new URL(search + "&query=" + '"' + mListItems[position] + '"' + "&resources=franchise");
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    new JsonRequest.getData().execute(testUrl);
+
 
                     resultsText.setText(gameInfo);
                 } else {

@@ -1,6 +1,9 @@
 package com.adburke.java1_final.json;
 
+import android.os.AsyncTask;
 import android.util.Log;
+
+import com.adburke.java1_final.DataPull;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,16 +13,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Created by aaronburke on 11/7/13.
  */
 public class JsonRequest {
-
+    static final String TAG = "JsonRequest";
 
     public static JSONObject buildJSON() {
-        final String TAG = "GameLog";
+
             // Overall data object
             JSONObject dataObject = new JSONObject();
 
@@ -116,7 +118,9 @@ public class JsonRequest {
 
     public static JSONObject getJSONResponse(URL url) {
         String result = "";
-        JSONObject response;
+        JSONObject response = null;
+
+        // Read JSON response from the API
         try {
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -126,16 +130,40 @@ public class JsonRequest {
                 sb.append(line + "\n");
             }
             result = sb.toString();
+            //Log.i(TAG, result);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         // Create JSON object from string result
         try {
             response = new JSONObject(result);
+            //Log.i(TAG, response.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         return response;
+    }
+
+    public static class getData extends AsyncTask<URL, Void, JSONObject> {
+
+        @Override
+        protected JSONObject doInBackground(URL... urls) {
+            //String responseString = "";
+            JSONObject response = null;
+            for (URL url : urls) {
+                response = getJSONResponse(url);
+            }
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+
+            Log.i(TAG, jsonObject.toString());
+            super.onPostExecute(jsonObject);
+        }
     }
 }
