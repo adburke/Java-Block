@@ -6,6 +6,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
 /**
  * Created by aaronburke on 11/7/13.
  */
@@ -106,7 +112,30 @@ public class JsonRequest {
 
         return resultString;
 
+    }
 
+    public static JSONObject getJSONResponse(URL url) {
+        String result = "";
+        JSONObject response;
+        try {
 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            result = sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Create JSON object from string result
+        try {
+            response = new JSONObject(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return response;
     }
 }
