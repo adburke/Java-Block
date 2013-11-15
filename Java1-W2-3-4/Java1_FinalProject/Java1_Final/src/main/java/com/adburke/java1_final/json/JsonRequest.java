@@ -73,22 +73,23 @@ public class JsonRequest {
         ArrayList<String> names = new ArrayList<String>();
         String name = null;
         JSONArray platforms = null;
+        if (dataResults != null) {
+            try {
+                JSONArray results = dataResults.getJSONArray("results");
+                // Filter out results to only use what matches selected
+                int j = results.length();
+                for (int i = 0; i < j; i++) {
+                    name = results.getJSONObject(i).getString("name");
+                    names.add(i, name);
+                }
 
-        try {
-            JSONArray results = dataResults.getJSONArray("results");
-            // Filter out results to only use what matches selected
-            int j = results.length();
-            for (int i = 0; i < j; i++) {
-                name = results.getJSONObject(i).getString("name");
-                names.add(i, name);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+            return names;
         }
-
         return names;
-
     }
 
     public static JSONObject getJSONResponse(URL url) {
@@ -152,19 +153,19 @@ public class JsonRequest {
         protected ArrayList<String> doInBackground(URL... urls) {
             //String responseString = "";
             JSONObject response = null;
-            ArrayList<String> franchises = new ArrayList<String>();
+            ArrayList<String> games = new ArrayList<String>();
             for (URL url : urls) {
                 response = getJSONResponse(url);
             }
-            franchises = readJSONList(response);
+            games = readJSONList(response);
 
-            return franchises;
+            return games;
         }
 
         @Override
         protected void onPostExecute(ArrayList<String> names) {
 
-
+            DataPull.onListUpdate(names);
             Log.i(TAG, names.toString());
             super.onPostExecute(names);
         }
