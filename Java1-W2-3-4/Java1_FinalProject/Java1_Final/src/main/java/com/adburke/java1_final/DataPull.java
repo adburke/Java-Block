@@ -52,6 +52,7 @@ public class DataPull extends Activity {
         // Check network connectivity
         Boolean status = ConnectStatus.getNetworkStatus(mContext);
         if (status) {
+            // Proceed with API with valid connection
             URL franchiseUrl = null;
             try {
                 franchiseUrl = new URL("http://www.giantbomb.com/api/franchises/?api_key=28bce6b74edc15b89a33b0bb61d7434c3a11f6bb&format=json&limit=10");
@@ -61,9 +62,9 @@ public class DataPull extends Activity {
 
             new JsonRequest.getFranchises().execute(franchiseUrl);
         } else {
+            // Create the AlertDialog object and return it
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
             builder.setMessage(R.string.no_conn).setTitle(R.string.warning);
-            // Create the AlertDialog object and return it
             builder.show();
         }
 
