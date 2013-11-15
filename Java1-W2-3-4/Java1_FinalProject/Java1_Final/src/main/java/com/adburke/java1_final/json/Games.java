@@ -2,6 +2,7 @@ package com.adburke.java1_final.json;
 
 /**
  * Created by aaronburke on 11/7/13.
+ * Java1 Week 3
  */
 public enum Games {
     QUAKE("Quake", new String[] {"PC"}, "1997"),

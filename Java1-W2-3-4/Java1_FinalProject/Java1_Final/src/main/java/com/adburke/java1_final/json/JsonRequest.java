@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 /**
  * Created by aaronburke on 11/7/13.
+ * Java1 Week 3
  */
 
 public class JsonRequest {

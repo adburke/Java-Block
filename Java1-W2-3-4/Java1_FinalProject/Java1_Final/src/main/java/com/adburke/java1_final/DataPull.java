@@ -27,6 +27,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+/**
+ * Created by aaronburke on 11/7/13.
+ * Java1 Week 3
+ */
 
 public class DataPull extends Activity {
     static final String TAG = "DataPull";
@@ -45,6 +49,7 @@ public class DataPull extends Activity {
         mContext = this;
         mListItems = getResources().getStringArray(R.array.games_array);
 
+        // Check network connectivity
         Boolean status = ConnectStatus.getNetworkStatus(mContext);
         if (status) {
             URL franchiseUrl = null;
@@ -75,7 +80,7 @@ public class DataPull extends Activity {
         testText.setGravity(Gravity.LEFT);
         projectLayout.addView(testText);
 
-
+        // ProgressBar
         pb = new ProgressBar(mContext);
         pb.setIndeterminate(true);
         pb.setVisibility(View.VISIBLE);
@@ -90,6 +95,7 @@ public class DataPull extends Activity {
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         projectLayout.addView(gameSpinner);
 
+        // ListView
         gamesList = new ListView(this);
         String[] listStr = new String[]{"Choose a franchise"};
         ArrayAdapter listAdap = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, listStr);
@@ -103,11 +109,13 @@ public class DataPull extends Activity {
                 if (position != 0 || cycle == 1) {
                     Toast.makeText(mContext, "You have selected " + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show();
 
+                    // Creates a url String from the selected spinner option
                     String gamesStr = null;
                     String search = "http://www.giantbomb.com/api/search/?api_key=28bce6b74edc15b89a33b0bb61d7434c3a11f6bb&format=json";
                     String queryStr = parent.getItemAtPosition(position).toString();
                     URL gamesUrl = null;
                     try {
+                        // Added encoding for franchises with spaces in them
                         gamesStr = search + "&query=" + '"' + URLEncoder.encode(queryStr, "UTF-8") + '"' + "&resources=franchise";
                         gamesUrl = new URL(gamesStr);
                     } catch (UnsupportedEncodingException e) {

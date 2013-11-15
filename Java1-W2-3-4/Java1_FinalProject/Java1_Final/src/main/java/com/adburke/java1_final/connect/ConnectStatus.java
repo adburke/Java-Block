@@ -5,7 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Created by aaronburke on 11/12/13.
+ * Created by aaronburke on 11/7/13.
+ * Java1 Week 3
  */
 public class ConnectStatus {
 
