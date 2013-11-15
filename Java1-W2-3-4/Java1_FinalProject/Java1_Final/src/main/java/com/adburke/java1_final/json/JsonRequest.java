@@ -1,7 +1,9 @@
 package com.adburke.java1_final.json;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.adburke.java1_final.DataPull;
 
@@ -13,10 +15,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by aaronburke on 11/7/13.
  */
+
 public class JsonRequest {
     static final String TAG = "JsonRequest";
 
@@ -63,56 +67,27 @@ public class JsonRequest {
 
     }
 
-    public static String readJSON(String selected) {
-        String name = null, releaseDate = null, resultString = null, platformStr = "";
-        JSONArray platforms = null;
 
-        JSONObject dataResults = buildJSON();
+
+    public static ArrayList<String> readJSONList(JSONObject dataResults) {
+        ArrayList<String> names = new ArrayList<String>();
+        String name = null;
+        JSONArray platforms = null;
 
         try {
             JSONArray results = dataResults.getJSONArray("results");
             // Filter out results to only use what matches selected
             int j = results.length();
             for (int i = 0; i < j; i++) {
-                if (results.getJSONObject(i).getString("name").equals(selected)) {
-                    name = results.getJSONObject(i).getString("name");
-                    platforms = results.getJSONObject(i).getJSONArray("platforms");
-                    releaseDate = results.getJSONObject(i).getString("original_release_date");
-
-                    break;
-                }
+                name = results.getJSONObject(i).getString("name");
+                names.add(i, name);
             }
 
-            // Create string from platforms array
-            if (platforms != null) {
-                int x = platforms.length();
-                for (int i = 0; i < x; i++) {
-                    if (i == 0){
-                        try {
-                            platformStr = platforms.getString(i);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        try {
-                            platformStr = platformStr + ", " +platforms.getString(i);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                }
-            }
-
-
-            resultString = "Name: " + name + "\r\n"
-                    + "Platforms: " + platformStr + "\r\n"
-                    + "Release Year: " + releaseDate + "\r\n";
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return resultString;
+        return names;
 
     }
 
@@ -145,25 +120,53 @@ public class JsonRequest {
 
         return response;
     }
-
-    public static class getData extends AsyncTask<URL, Void, JSONObject> {
+    // Async for franchise api call
+    public static class getFranchises extends AsyncTask<URL, Void, ArrayList<String>> {
 
         @Override
-        protected JSONObject doInBackground(URL... urls) {
+        protected ArrayList<String> doInBackground(URL... urls) {
             //String responseString = "";
             JSONObject response = null;
+            ArrayList<String> franchises = new ArrayList<String>();
             for (URL url : urls) {
                 response = getJSONResponse(url);
             }
+            franchises = readJSONList(response);
 
-            return response;
+            return franchises;
         }
 
         @Override
-        protected void onPostExecute(JSONObject jsonObject) {
+        protected void onPostExecute(ArrayList<String> names) {
+            DataPull.onSpinnerUpdate(names);
+            Log.i(TAG, names.toString());
+            super.onPostExecute(names);
+        }
 
-            Log.i(TAG, jsonObject.toString());
-            super.onPostExecute(jsonObject);
+
+    }
+    // Async for games in franchise call
+    public static class getGames extends AsyncTask<URL, Void, ArrayList<String>> {
+
+        @Override
+        protected ArrayList<String> doInBackground(URL... urls) {
+            //String responseString = "";
+            JSONObject response = null;
+            ArrayList<String> franchises = new ArrayList<String>();
+            for (URL url : urls) {
+                response = getJSONResponse(url);
+            }
+            franchises = readJSONList(response);
+
+            return franchises;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<String> names) {
+
+
+            Log.i(TAG, names.toString());
+            super.onPostExecute(names);
         }
     }
 }

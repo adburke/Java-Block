@@ -1,7 +1,9 @@
 package com.adburke.java1_final;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -9,22 +11,27 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adburke.java1_final.json.JsonRequest;
-
-import org.json.JSONObject;
+import com.adburke.java1_final.connect.ConnectStatus;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class DataPull extends Activity {
     static final String TAG = "DataPull";
-    Context mContext;
-    String[] mListItems;
+    public static Context mContext;
+    public static String[] mListItems;
+    private static int cycle = 0;
+
+    public static Spinner gameSpinner;
+    public static ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +40,25 @@ public class DataPull extends Activity {
         mContext = this;
         mListItems = getResources().getStringArray(R.array.games_array);
 
+        Boolean status = ConnectStatus.getNetworkStatus(mContext);
+        if (status) {
+            URL franchiseUrl = null;
+            try {
+                franchiseUrl = new URL("http://www.giantbomb.com/api/franchises/?api_key=28bce6b74edc15b89a33b0bb61d7434c3a11f6bb&format=json&limit=10");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+            new JsonRequest.getFranchises().execute(franchiseUrl);
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setMessage(R.string.no_conn).setTitle(R.string.warning);
+            // Create the AlertDialog object and return it
+            builder.show();
+        }
+
         // Create Layout in code
-        LinearLayout projectLayout = new LinearLayout(this);
+        final LinearLayout projectLayout = new LinearLayout(this);
         projectLayout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
@@ -46,11 +70,17 @@ public class DataPull extends Activity {
         testText.setGravity(Gravity.LEFT);
         projectLayout.addView(testText);
 
+
+        pb = new ProgressBar(mContext);
+        pb.setIndeterminate(true);
+        pb.setVisibility(View.VISIBLE);
+        projectLayout.addView(pb);
+
         // Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        Spinner gameSpinner = new Spinner(mContext);
+        gameSpinner = new Spinner(mContext);
         gameSpinner.setAdapter(spinnerAdapter);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         projectLayout.addView(gameSpinner);
@@ -65,24 +95,22 @@ public class DataPull extends Activity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
-                    Toast.makeText(mContext, "You have selected " + mListItems[position], Toast.LENGTH_LONG).show();
+                if (position != 0 || cycle == 1) {
+                    Toast.makeText(mContext, "You have selected " + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show();
 
-                    String gameInfo = JsonRequest.readJSON(mListItems[position]);
-
-                    URL testUrl = null;
+                    URL gamesUrl = null;
                     String search = "http://www.giantbomb.com/api/search/?api_key=28bce6b74edc15b89a33b0bb61d7434c3a11f6bb&format=json";
                     try {
-                        testUrl = new URL(search + "&query=" + '"' + mListItems[position] + '"' + "&resources=franchise");
+                        gamesUrl = new URL(search + "&query=" + '"' + parent.getItemAtPosition(position) + '"' + "&resources=franchise");
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
-                    new JsonRequest.getData().execute(testUrl);
+                    new JsonRequest.getGames().execute(gamesUrl);
 
 
-                    resultsText.setText(gameInfo);
-                } else {
-                    resultsText.setText("");
+                    cycle = 1;
+                 } else {
+
                 }
             }
 
@@ -96,6 +124,16 @@ public class DataPull extends Activity {
 
 
     }
+    // Sets the spinner with the api data
+    public static void onSpinnerUpdate (ArrayList<String> results) {
+        // Set new spinner data from api call
+        ArrayAdapter<String> updSpinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, results);
+        updSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gameSpinner.setAdapter(updSpinnerAdapter);
+        // Remove Progress bar
+        pb.setVisibility(View.GONE);
 
+
+    }
 
 }
