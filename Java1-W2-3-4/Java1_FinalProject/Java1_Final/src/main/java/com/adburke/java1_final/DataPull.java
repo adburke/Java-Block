@@ -3,33 +3,24 @@ package com.adburke.java1_final;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.adburke.java1_final.json.JsonRequest;
-import com.adburke.java1_final.connect.ConnectStatus;
-
 import java.io.UnsupportedEncodingException;
-import java.lang.ref.SoftReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.adburke.java1_final.json.JsonRequest.*;
+import com.adburke.java1_final.json.JsonRequest;
+import com.example.java1_final.ConnectStatus;
 
 /**
  * Created by aaronburke on 11/7/13.
