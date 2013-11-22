@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,6 +27,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.adburke.java1_final.json.JsonRequest.*;
 
 /**
  * Created by aaronburke on 11/7/13.
@@ -45,6 +49,7 @@ public class DataPull extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.data_pull_main);
 
         mContext = this;
         mListItems = getResources().getStringArray(R.array.games_array);
@@ -68,41 +73,22 @@ public class DataPull extends Activity {
             builder.show();
         }
 
-        // Create Layout in code
-        final LinearLayout projectLayout = new LinearLayout(this);
-        projectLayout.setOrientation(LinearLayout.VERTICAL);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-        // Main Info TextView
-        TextView testText = new TextView(this);
-        lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        testText.setLayoutParams(lp);
-        testText.setText(R.string.main_text);
-        testText.setGravity(Gravity.LEFT);
-        projectLayout.addView(testText);
-
         // ProgressBar
-        pb = new ProgressBar(mContext);
+        pb = (ProgressBar)findViewById(R.id.progressBar);
         pb.setIndeterminate(true);
         pb.setVisibility(View.VISIBLE);
-        projectLayout.addView(pb);
 
         // Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        gameSpinner = new Spinner(mContext);
+        gameSpinner = (Spinner)findViewById(R.id.gamesSpinner);
         gameSpinner.setAdapter(spinnerAdapter);
-        lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        projectLayout.addView(gameSpinner);
 
         // ListView
-        gamesList = new ListView(this);
-        String[] listStr = new String[]{"Choose a franchise"};
+        gamesList = (ListView)findViewById(R.id.gamesList);
+        String[] listStr = new String[]{""};
         ArrayAdapter listAdap = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, listStr);
         gamesList.setAdapter(listAdap);
-        projectLayout.addView(gamesList);
-
         gameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -126,7 +112,7 @@ public class DataPull extends Activity {
                     }
 
 
-                    new JsonRequest.getGames().execute(gamesUrl);
+                    new getGames().execute(gamesUrl);
                     Log.i(TAG, gamesUrl.toString());
 
                     cycle = 1;
@@ -140,13 +126,10 @@ public class DataPull extends Activity {
 
             }
         });
-
-        setContentView(projectLayout);
-
-
     }
+
     // Sets the spinner with the api data
-    public static void onSpinnerUpdate (ArrayList<String> results) {
+    public static void onSpinnerUpdate(ArrayList<String> results) {
         // Set new spinner data from api call
         ArrayAdapter<String> updSpinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, results);
         updSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -157,7 +140,7 @@ public class DataPull extends Activity {
 
     }
     // Update list with api data
-    public static void onListUpdate (ArrayList<String> results) {
+    public static void onListUpdate(ArrayList<String> results) {
         // Set new list data from api call
         Log.i(TAG, results.toString());
         ArrayAdapter<String> newAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, results);

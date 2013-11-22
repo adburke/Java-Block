@@ -25,51 +25,6 @@ import java.util.ArrayList;
 public class JsonRequest {
     static final String TAG = "JsonRequest";
 
-    public static JSONObject buildJSON() {
-
-            // Overall data object
-            JSONObject dataObject = new JSONObject();
-
-            // Array of results within reults object
-            JSONArray resultsArray = new JSONArray();
-
-        try {
-            for (Games game : Games.values()) {
-                // Game Object
-                JSONObject gameData = new JSONObject();
-
-                // JSONArray to hold platforms string array
-                JSONArray platforms = new JSONArray();
-
-                gameData.put("name", game.getName());
-
-                // Convert incoming string array to JSONArray
-                for (int i = 0, j = game.getPlatforms().length; i < j; i++) {
-                    platforms.put(game.getPlatforms()[i]);
-                }
-                gameData.put("platforms", platforms);
-
-                gameData.put("original_release_date", game.getReleaseDate());
-
-                // Add gameData object to resultsArray
-                resultsArray.put(gameData);
-            }
-                // Place resultArray in dataObject
-                dataObject.put("results",resultsArray);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Log.i(TAG, dataObject.toString());
-
-        return dataObject;
-
-
-    }
-
-
-
     public static ArrayList<String> readJSONList(JSONObject dataResults) {
         ArrayList<String> names = new ArrayList<String>();
         String name = null;

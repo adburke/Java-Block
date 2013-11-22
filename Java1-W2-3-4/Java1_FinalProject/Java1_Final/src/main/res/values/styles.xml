@@ -1,8 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo.NoActionBar"/>
         <!-- Customize your theme here. -->
-    </style>
+        <style name="InfoText">
+            <item name="android:textStyle">bold</item>
+            <item name="android:textColor">#FFF</item>
+            <item name="android:textSize">20dp</item>
+        </style>
 
 </resources>
