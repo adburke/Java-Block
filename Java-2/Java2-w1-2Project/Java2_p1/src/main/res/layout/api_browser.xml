@@ -1,7 +1,39 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Api_browser"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/main_text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/filterSpinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/showAllBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/all_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <ListView
+        android:id="@+id/resultsList"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+
+</LinearLayout>
