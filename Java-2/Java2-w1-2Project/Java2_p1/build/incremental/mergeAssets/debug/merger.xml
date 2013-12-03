@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="ComAndroidSupportAppcompatV71900.aar" >
+        <source path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/src/main/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/src/debug/assets" />
+    </dataSet>
+
+</merger>
