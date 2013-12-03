@@ -12,6 +12,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <service android:exported="false" android:name="com.adburke.java2_p1.JsonDataService"/>
+
     </application>
 
 </manifest>

@@ -11,20 +11,12 @@
 package com.adburke.java2_p1;
 
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
-
-import com.semantics3.api.Products;
-
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-
-import oauth.signpost.exception.OAuthCommunicationException;
-import oauth.signpost.exception.OAuthExpectationFailedException;
-import oauth.signpost.exception.OAuthMessageSignerException;
 
 
 public class Api_browser extends Activity {
@@ -34,47 +26,28 @@ public class Api_browser extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.api_browser);
 
-        Products products = new Products(
-                "SEM3F98291C7F783DF843B12AA522D7D544C",
-                "ZGY1MTRmMDlhYTU1NWE5ZjYyNDVlNzcwMTMxOTY1MGU"
-        );
 
-        /* Build the query */
-        products
-                .productsField( "cat_id", 4992 )
-                .productsField( "brand", "Toshiba" );
+        Handler jsonServiceHandler = new Handler() {
 
-/* Make the query */
-        JSONObject results = null;
-        try {
-            results = products.getProducts();
-        } catch (OAuthMessageSignerException e) {
-            e.printStackTrace();
-        } catch (OAuthExpectationFailedException e) {
-            e.printStackTrace();
-        } catch (OAuthCommunicationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-/* or */
-        try {
-            results = products.get();
-        } catch (OAuthMessageSignerException e) {
-            e.printStackTrace();
-        } catch (OAuthExpectationFailedException e) {
-            e.printStackTrace();
-        } catch (OAuthCommunicationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            @Override
+            public void handleMessage(Message msg) {
+                //TODO: Handle different types of messages
 
-/* View the results of the query */
-        Log.i("Results: ", results.toString());
+                if (msg.arg1 == RESULT_OK) {
+                    Log.i("JSON HANDLER", "Service Completed");
 
+
+                }
+
+            }
+        };
+
+        Messenger jsonServiceMessenger = new Messenger(jsonServiceHandler);
+
+        Intent startJsonDataIntent = new Intent(this, JsonDataService.class);
+        startJsonDataIntent.putExtra(JsonDataService.MESSENGER_KEY, jsonServiceMessenger);
+        startService(startJsonDataIntent);
     }
-
 
 
 }
