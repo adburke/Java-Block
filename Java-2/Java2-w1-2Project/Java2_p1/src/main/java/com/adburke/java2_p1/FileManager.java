@@ -12,6 +12,9 @@ package com.adburke.java2_p1;
 
 import android.content.Context;
 import android.util.Log;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -52,10 +55,40 @@ public class FileManager {
         return result;
     }
 
-    public String readFile() {
-        String result = null;
+    public String readFile(Context context, String filename) {
+        Log.i("FILEMANAGER", "Starting readFile");
+        Log.i("FILEMANAGER", "filename: " + filename);
 
+        String result = "";
 
+        FileInputStream fis = null;
+        try {
+            fis = context.openFileInput(filename);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            byte[] contentBytes = new byte[1024];
+            int bytesRead = 0;
+            StringBuilder contentBuilder = new StringBuilder();
+
+            while ((bytesRead = bis.read(contentBytes)) != -1) {
+                result = new String(contentBytes, 0, bytesRead);
+                contentBuilder.append(result);
+            }
+            result = contentBuilder.toString();
+
+            Log.i("FILEMANAGER", "Success Result= " + result);
+        } catch (Exception e) {
+            Log.i("FILEMANAGER", "write file error: " + e.toString());
+        } finally {
+
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
 
         return result;
     }
