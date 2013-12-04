@@ -83,7 +83,7 @@ public class JsonDataService extends IntentService {
             Message messege = Message.obtain();
             if (messege != null) {
                 messege.arg1 = Activity.RESULT_OK;
-                messege.obj = results;
+                messege.obj = results.toString();
             } else {
                 messege.arg1 = Activity.RESULT_CANCELED;
                 messege.obj = null;

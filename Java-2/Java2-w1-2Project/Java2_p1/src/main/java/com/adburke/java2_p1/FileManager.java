@@ -11,8 +11,9 @@
 package com.adburke.java2_p1;
 
 import android.content.Context;
-
-import org.json.JSONObject;
+import android.util.Log;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class FileManager {
 
@@ -30,19 +31,32 @@ public class FileManager {
     }
 
 
-    public boolean WriteFile(Context context, String filename, String content) {
-        boolean result = false;
+    public Boolean writeFile(Context context, String filename, String content) {
+        Log.i("FILEMANAGER", "Starting writeFile");
+        Log.i("FILEMANAGER", "filename: " + filename);
 
+        Boolean result = false;
+        FileOutputStream fos;
+        try {
+            fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            fos.write(content.getBytes());
+            fos.close();
+            result = true;
+            Log.i("FILEMANAGER", "Success");
+        } catch (Exception e) {
+            Log.i("FILEMANAGER", "Write error: " + e.toString());
+            e.printStackTrace();
+        }
 
 
         return result;
     }
 
-    public String ReadFile() {
+    public String readFile() {
         String result = null;
 
 
-        
+
         return result;
     }
 
