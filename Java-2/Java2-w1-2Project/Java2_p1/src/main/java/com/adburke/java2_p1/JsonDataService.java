@@ -49,7 +49,6 @@ public class JsonDataService extends IntentService {
         Messenger messenger = (Messenger) extras.get(MESSENGER_KEY);
 
 
-
         Products products = new Products(
                 "SEM3F98291C7F783DF843B12AA522D7D544C",
                 "ZGY1MTRmMDlhYTU1NWE5ZjYyNDVlNzcwMTMxOTY1MGU"
@@ -57,8 +56,7 @@ public class JsonDataService extends IntentService {
 
         /* Build the query */
         products
-                //.productsField("cat_id", 4992)
-                .productsField("brand", "Toshiba");
+                .productsField("brand", "Apple");
 
         /* Make the query */
         JSONObject results = null;

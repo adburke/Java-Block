@@ -24,6 +24,8 @@ public class Api_browser extends Activity {
     Context m_context;
     FileManager m_file;
     String m_json_file = "json_data.txt";
+    // Can be used to tell if the file has already been created on the device
+    Boolean writeStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class Api_browser extends Activity {
                 //TODO: Handle different types of messages
                 String results = null;
 
-                Boolean writeStatus = false;
+                writeStatus = false;
 
                 if (msg.arg1 == RESULT_OK && msg.obj != null) {
                     Log.i("JSON HANDLER", "Service Completed Successfully");
@@ -51,6 +53,11 @@ public class Api_browser extends Activity {
                     // Instantiate FileManager singleton
                     m_file = FileManager.getMinstance();
                     writeStatus = m_file.writeFile(m_context, m_json_file, results);
+
+                    // Used to test FileManager readFile
+//                    if (writeStatus) {
+//                        m_file.readFile(m_context, m_json_file);
+//                    }
                 }
 
             }

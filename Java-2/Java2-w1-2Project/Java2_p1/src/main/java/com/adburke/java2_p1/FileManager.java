@@ -45,7 +45,7 @@ public class FileManager {
             fos.write(content.getBytes());
             fos.close();
             result = true;
-            Log.i("FILEMANAGER", "Success");
+            Log.i("FILEMANAGER", "Write file success");
         } catch (Exception e) {
             Log.i("FILEMANAGER", "Write error: " + e.toString());
             e.printStackTrace();
@@ -75,9 +75,9 @@ public class FileManager {
             }
             result = contentBuilder.toString();
 
-            Log.i("FILEMANAGER", "Success Result= " + result);
+            Log.i("FILEMANAGER", "Success result= " + result);
         } catch (Exception e) {
-            Log.i("FILEMANAGER", "write file error: " + e.toString());
+            Log.i("FILEMANAGER", "Write file error: " + e.toString());
         } finally {
 
             if (fis != null) {
