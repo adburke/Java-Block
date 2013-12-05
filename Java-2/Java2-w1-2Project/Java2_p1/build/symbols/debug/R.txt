@@ -239,7 +239,7 @@ int id action_context_bar 0x7f08001d
 int id action_menu_divider 0x7f080015
 int id action_menu_presenter 0x7f080016
 int id action_mode_close_button 0x7f080024
-int id action_settings 0x7f080040
+int id action_settings 0x7f080043
 int id activity_chooser_view_content 0x7f080025
 int id always 0x7f08000f
 int id beginning 0x7f08000a
@@ -266,6 +266,8 @@ int id middle 0x7f08000b
 int id never 0x7f08000d
 int id none 0x7f080009
 int id normal 0x7f080000
+int id productName 0x7f080040
+int id productPrice 0x7f080042
 int id progress_circular 0x7f080018
 int id progress_horizontal 0x7f080019
 int id radio 0x7f08002f
@@ -292,6 +294,7 @@ int id title 0x7f08002b
 int id top_action_bar 0x7f080020
 int id up 0x7f080021
 int id useLogo 0x7f080003
+int id vendor 0x7f080041
 int id withText 0x7f080010
 int integer abc_max_action_buttons 0x7f0a0000
 int layout abc_action_bar_decor 0x7f030000
@@ -319,7 +322,8 @@ int layout abc_search_dropdown_item_icons_2line 0x7f030015
 int layout abc_search_view 0x7f030016
 int layout api_browser 0x7f030017
 int layout fragment_main 0x7f030018
-int layout support_simple_spinner_dropdown_item 0x7f030019
+int layout list_row 0x7f030019
+int layout support_simple_spinner_dropdown_item 0x7f03001a
 int menu api_browser 0x7f0d0000
 int string abc_action_bar_home_description 0x7f0b0000
 int string abc_action_bar_up_description 0x7f0b0001

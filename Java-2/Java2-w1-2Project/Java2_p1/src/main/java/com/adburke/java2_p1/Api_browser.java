@@ -13,6 +13,7 @@ package com.adburke.java2_p1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,7 +66,7 @@ public class Api_browser extends Activity {
             public void handleMessage(Message msg) {
                 //TODO: Handle different types of messages
                 String results = null;
-
+                Uri initialUri = null;
                 writeStatus = false;
 
                 if (msg.arg1 == RESULT_OK && msg.obj != null) {
@@ -77,6 +78,11 @@ public class Api_browser extends Activity {
                     // Instantiate FileManager singleton
                     mFile = FileManager.getMinstance();
                     writeStatus = mFile.writeFile(mContext, mJsonFile, results);
+
+                    if (writeStatus) {
+                        initialUri = CollectionProvider.JsonData.CONTENT_URI;
+                        onListUpdate(initialUri);
+                    }
 
                     // Used to test FileManager readFile
 //                    if (writeStatus) {
@@ -95,9 +101,9 @@ public class Api_browser extends Activity {
     }
 
     // Update list with api data
-    public static void onListUpdate(Uri uri) {
-        
+    public void onListUpdate(Uri uri) {
 
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 
     }
 

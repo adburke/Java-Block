@@ -868,7 +868,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080015;
         public static final int action_menu_presenter=0x7f080016;
         public static final int action_mode_close_button=0x7f080024;
-        public static final int action_settings=0x7f080040;
+        public static final int action_settings=0x7f080043;
         public static final int activity_chooser_view_content=0x7f080025;
         public static final int always=0x7f08000f;
         public static final int beginning=0x7f08000a;
@@ -895,6 +895,8 @@ containing a value of this type.
         public static final int never=0x7f08000d;
         public static final int none=0x7f080009;
         public static final int normal=0x7f080000;
+        public static final int productName=0x7f080040;
+        public static final int productPrice=0x7f080042;
         public static final int progress_circular=0x7f080018;
         public static final int progress_horizontal=0x7f080019;
         public static final int radio=0x7f08002f;
@@ -921,6 +923,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f080020;
         public static final int up=0x7f080021;
         public static final int useLogo=0x7f080003;
+        public static final int vendor=0x7f080041;
         public static final int withText=0x7f080010;
     }
     public static final class integer {
@@ -952,7 +955,8 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int api_browser=0x7f030017;
         public static final int fragment_main=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int list_row=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int api_browser=0x7f0d0000;

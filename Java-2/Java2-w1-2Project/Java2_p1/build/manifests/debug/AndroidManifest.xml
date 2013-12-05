@@ -16,7 +16,7 @@
 
         <service android:exported="false" android:name="com.adburke.java2_p1.JsonDataService"/>
 
-        <provider android:authorities="com.adburke.java2_p1.CollectionProvider" android:name="com.adburke.java2_p1.CollectionProvider"/>
+        <provider android:authorities="com.adburke.java2_p1.CollectionProvider" android:exported="true" android:name="com.adburke.java2_p1.CollectionProvider"/>
 
     </application>
 
