@@ -7,8 +7,11 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="selection_array">
+        <item>[FILTERS]</item>
         <item>Desktops</item>
         <item>Laptops</item>
+        <item>Tablets</item>
+        <item>Unlocked Phones</item>
     </string-array>
 
 </resources>

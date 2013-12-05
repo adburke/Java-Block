@@ -5,8 +5,11 @@
     <eat-comment />
 
     <string-array name="selection_array">
+        <item>[FILTERS]</item>
         <item>Desktops</item>
         <item>Laptops</item>
+        <item>Tablets</item>
+        <item>Unlocked Phones</item>
     </string-array>
     <!-- From: file:/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res/values/values.xml -->
     <eat-comment />

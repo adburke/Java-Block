@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -36,13 +37,16 @@ public class Api_browser extends Activity {
     static Context mContext;
     FileManager mFile;
     static String mJsonFile = "json_data.txt";
+
     // Can be used to tell if the file has already been created on the device
-    Boolean writeStatus;
+    Boolean writeStatus = false;
+
+    // Query All Button
+    public static Button queryAllBtn;
 
     // Spinner variables
     public static String[] mListItems;
     public static Spinner selectionSpinner;
-    private static int cycle = 0;
 
     // List View
     public static ListView resultsList;
@@ -55,17 +59,30 @@ public class Api_browser extends Activity {
         // Initialize context
         mContext = this;
 
+        Boolean status = ConnectionStatus.getNetworkStatus(mContext);
+
         mListItems = getResources().getStringArray(R.array.selection_array);
+
+        // Button
+        queryAllBtn = (Button)findViewById(R.id.showAllBtn);
+        queryAllBtn.setEnabled(false);
+        queryAllBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
+            }
+        });
 
         // Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
         selectionSpinner.setAdapter(spinnerAdapter);
+        selectionSpinner.setEnabled(false);
         selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0 || cycle == 1) {
+                if (position != 0) {
 
                     Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
                     String queryStr = parent.getItemAtPosition(position).toString();
@@ -74,10 +91,6 @@ public class Api_browser extends Activity {
                     // Create uri to pass to onListUpdate based on the selection
                     uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + queryStr);
                     onListUpdate(uriFilter);
-
-
-                    cycle = 1;
-                } else {
 
                 }
             }
@@ -115,6 +128,7 @@ public class Api_browser extends Activity {
                     if (writeStatus) {
                         initialUri = CollectionProvider.JsonData.CONTENT_URI;
                         onListUpdate(initialUri);
+
                     }
 
                     // Used to test FileManager readFile
@@ -125,12 +139,17 @@ public class Api_browser extends Activity {
 
             }
         };
+        if (!writeStatus && status) {
 
-        Messenger jsonServiceMessenger = new Messenger(jsonServiceHandler);
-
-        Intent startJsonDataIntent = new Intent(this, JsonDataService.class);
-        startJsonDataIntent.putExtra(JsonDataService.MESSENGER_KEY, jsonServiceMessenger);
-        startService(startJsonDataIntent);
+            Messenger jsonServiceMessenger = new Messenger(jsonServiceHandler);
+            Intent startJsonDataIntent = new Intent(this, JsonDataService.class);
+            startJsonDataIntent.putExtra(JsonDataService.MESSENGER_KEY, jsonServiceMessenger);
+            startService(startJsonDataIntent);
+        } else if (writeStatus) {
+            onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
+        } else {
+            Toast.makeText(this, "No network connection found and no local data to display.", Toast.LENGTH_LONG).show();
+        }
 
 
     }
@@ -174,6 +193,8 @@ public class Api_browser extends Activity {
                 new String[]{"productName", "vendor", "productPrice"}, new int[]{R.id.productName, R.id.vendor, R.id.productPrice});
         // Add the adapter to the ListView
         resultsList.setAdapter(adapter);
+        selectionSpinner.setEnabled(true);
+        queryAllBtn.setEnabled(true);
     }
 
 }
