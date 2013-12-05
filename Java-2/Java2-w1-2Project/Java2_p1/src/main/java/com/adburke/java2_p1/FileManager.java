@@ -47,7 +47,7 @@ public class FileManager {
             result = true;
             Log.i("FILEMANAGER", "Write file success");
         } catch (Exception e) {
-            Log.i("FILEMANAGER", "Write error: " + e.toString());
+            Log.e("FILEMANAGER", "Write error: " + e.toString());
             e.printStackTrace();
         }
 
@@ -77,7 +77,7 @@ public class FileManager {
 
             Log.i("FILEMANAGER", "Success result= " + result);
         } catch (Exception e) {
-            Log.i("FILEMANAGER", "Write file error: " + e.toString());
+            Log.e("FILEMANAGER", "Write file error: " + e.toString());
         } finally {
 
             if (fis != null) {

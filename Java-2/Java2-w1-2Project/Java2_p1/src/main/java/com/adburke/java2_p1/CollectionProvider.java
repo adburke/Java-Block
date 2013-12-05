@@ -19,6 +19,7 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.storage.StorageManager;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,6 +109,7 @@ public class CollectionProvider extends ContentProvider{
 
         switch (uriMatcher.match(uri)) {
             case ITEMS:
+
                 for (int i = 0, j = resultsArray.length(); i < j; i++) {
                     try {
                         siteDetails = resultsArray.getJSONObject(i).getJSONArray("sitedetails");
@@ -120,13 +122,47 @@ public class CollectionProvider extends ContentProvider{
                         e.printStackTrace();
                     }
                 }
-
+                break;
             case ITEMS_ID:
+
+                // Get the last segment value from the uri in this case the string number
+                String itemId = uri.getLastPathSegment();
+
+                // Create an integer out of the string and check for correct int format
+                int indexVal;
+                try {
+                    indexVal = Integer.parseInt(itemId);
+                } catch (NumberFormatException e) {
+                    Log.e("ITEMS_ID URI", "Incorrect format" );
+                    break;
+                }
+
+                // Check if the item id is with valid range of results
+                if (indexVal <= 0 || indexVal > resultsArray.length()) {
+                    Log.e("ITEMS_ID URI", "ID number not within valid range");
+                    break;
+                }
+
+                try {
+
+                    siteDetails = resultsArray.getJSONObject(indexVal - 1).getJSONArray("sitedetails");
+                    latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
+
+                    result.addRow(new Object[] {indexVal,resultsArray.getJSONObject(indexVal - 1).get("name"),
+                            latestOffers.getJSONObject(0).get("seller"), latestOffers.getJSONObject(0).get("price") });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ITEMS_TYPE:
+
 
         }
 
-
-        return null;
+        Log.i("CURSOR ITEMS", result.toString());
+        return result;
     }
 
     /**
@@ -150,14 +186,14 @@ public class CollectionProvider extends ContentProvider{
     @Override
     public String getType(Uri uri) {
 
-        switch (uriMatcher.match(uri)) {
-            case ITEMS:
-                return JsonData.CONTENT_TYPE;
-            case ITEMS_ID:
-                return JsonData.CONTENT_ITEM_TYPE;
-            case ITEMS_TYPE:
-                return JsonData.CONTENT_ITEM_TYPE;
-        }
+//        switch (uriMatcher.match(uri)) {
+//            case ITEMS:
+//                return JsonData.CONTENT_TYPE;
+//            case ITEMS_ID:
+//                return JsonData.CONTENT_ITEM_TYPE;
+//            case ITEMS_TYPE:
+//                return JsonData.CONTENT_ITEM_TYPE;
+//        }
 
         return null;
     }

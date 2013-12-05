@@ -22,9 +22,12 @@ import android.os.Messenger;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Api_browser extends Activity {
@@ -103,8 +106,42 @@ public class Api_browser extends Activity {
     // Update list with api data
     public void onListUpdate(Uri uri) {
 
+        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
+
+        // Get cursor and URI
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 
+        // Check if the cursor returned values
+        if (cursor == null) {
+            Toast.makeText(this, "Cursor value is null", Toast.LENGTH_LONG).show();
+            Log.i("onListUpdate", "NULL CURSOR AT: " + uri.toString());
+        }
+        // Clear the product list of values if already created
+        if (productList != null) {
+            productList.clear();
+        }
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                for (int i = 0, j = cursor.getCount(); i < j; i++) {
+                    HashMap<String, String> listMap = new HashMap<String, String>();
+
+                    listMap.put("productName", cursor.getString(1));
+                    listMap.put("vendor", cursor.getString(2));
+                    listMap.put("productPrice", cursor.getString(3));
+
+                    cursor.moveToNext();
+
+                    productList.add(listMap);
+
+                }
+            }
+        }
+        // Create the adapter from the ArrayList of HashMaps and map to the list_row xml layout
+        SimpleAdapter adapter = new SimpleAdapter(this, productList, R.layout.list_row,
+                new String[]{"productName", "vendor", "productPrice"}, new int[]{R.id.productName, R.id.vendor, R.id.productPrice});
+        // Add the adapter to the ListView
+        resultsList.setAdapter(adapter);
     }
 
 }
