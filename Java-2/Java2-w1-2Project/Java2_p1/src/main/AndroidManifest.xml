@@ -32,7 +32,8 @@
 
         <provider
             android:authorities="com.adburke.java2_p1.CollectionProvider"
-            android:name=".CollectionProvider" />
+            android:name=".CollectionProvider"
+            android:exported="true" />
 
     </application>
 

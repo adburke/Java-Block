@@ -13,19 +13,32 @@ package com.adburke.java2_p1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 public class Api_browser extends Activity {
-    Context m_context;
-    FileManager m_file;
-    String m_json_file = "json_data.txt";
+    static Context mContext;
+    FileManager mFile;
+    static String mJsonFile = "json_data.txt";
     // Can be used to tell if the file has already been created on the device
     Boolean writeStatus;
+
+    // Spinner variables
+    public static String[] mListItems;
+    public static Spinner selectionSpinner;
+
+    // List View
+    public static ListView resultsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +46,18 @@ public class Api_browser extends Activity {
         setContentView(R.layout.api_browser);
 
         // Initialize context
-        m_context = this;
+        mContext = this;
+
+        mListItems = getResources().getStringArray(R.array.selection_array);
+
+        // Spinner
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
+        selectionSpinner.setAdapter(spinnerAdapter);
+
+        // ListView
+        resultsList = (ListView)findViewById(R.id.resultsList);
 
         Handler jsonServiceHandler = new Handler() {
 
@@ -51,8 +75,8 @@ public class Api_browser extends Activity {
                     results = (String) msg.obj;
 
                     // Instantiate FileManager singleton
-                    m_file = FileManager.getMinstance();
-                    writeStatus = m_file.writeFile(m_context, m_json_file, results);
+                    mFile = FileManager.getMinstance();
+                    writeStatus = mFile.writeFile(mContext, mJsonFile, results);
 
                     // Used to test FileManager readFile
 //                    if (writeStatus) {
@@ -70,5 +94,11 @@ public class Api_browser extends Activity {
         startService(startJsonDataIntent);
     }
 
+    // Update list with api data
+    public static void onListUpdate(Uri uri) {
+        
+
+
+    }
 
 }

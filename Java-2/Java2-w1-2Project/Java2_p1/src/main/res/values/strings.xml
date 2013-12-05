@@ -6,4 +6,9 @@
     <string name="main_text">Choose a search filter:</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="selection_array">
+        <item>Desktops</item>
+        <item>Laptops</item>
+    </string-array>
+
 </resources>

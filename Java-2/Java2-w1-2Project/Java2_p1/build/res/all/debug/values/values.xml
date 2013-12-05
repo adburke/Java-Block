@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- From: file:/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string-array name="selection_array">
+        <item>Desktops</item>
+        <item>Laptops</item>
+    </string-array>
     <!-- From: file:/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/build/exploded-bundles/ComAndroidSupportAppcompatV71900.aar/res/values/values.xml -->
     <eat-comment />
 

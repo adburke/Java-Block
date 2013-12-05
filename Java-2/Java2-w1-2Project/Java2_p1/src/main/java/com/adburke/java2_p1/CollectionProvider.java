@@ -13,9 +13,15 @@ package com.adburke.java2_p1;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
+import android.os.storage.StorageManager;
 import android.provider.BaseColumns;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class CollectionProvider extends ContentProvider{
 
@@ -28,7 +34,25 @@ public class CollectionProvider extends ContentProvider{
         public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.adburke.java2_p1.item";
         public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.adburke.java2_p1.item";
 
+        public static final String NAME_COLUMN = "productName";
+        public static final String VENDOR_COLUMN = "vendor";
+        public static final String PRICE_COLUMN = "productPrice";
 
+        public static final String[] PROJECTION = {"_Id", NAME_COLUMN, VENDOR_COLUMN, PRICE_COLUMN};
+
+        private JsonData() {};
+    }
+
+    public static final int ITEMS = 1;
+    public static final int ITEMS_ID = 2;
+    public static final int ITEMS_TYPE = 3;
+
+    private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+    static {
+        uriMatcher.addURI(AUTHORITY, "items/", ITEMS);
+        uriMatcher.addURI(AUTHORITY, "items/#", ITEMS_ID);
+        uriMatcher.addURI(AUTHORITY, "items/type/", ITEMS_TYPE);
     }
 
     /**
@@ -118,6 +142,22 @@ public class CollectionProvider extends ContentProvider{
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+
+        MatrixCursor result = new MatrixCursor(JsonData.PROJECTION);
+
+        String JSONString = FileManager.readFile(getContext(), Api_browser.mJsonFile);
+        JSONObject query = null;
+        JSONArray resultsArray = null;
+
+
+        switch (uriMatcher.match(uri)) {
+            case ITEMS:
+                return JsonData.CONTENT_TYPE;
+            case ITEMS_ID:
+                return JsonData.CONTENT_ITEM_TYPE;
+        }
+
+
         return null;
     }
 
@@ -141,6 +181,16 @@ public class CollectionProvider extends ContentProvider{
      */
     @Override
     public String getType(Uri uri) {
+
+        switch (uriMatcher.match(uri)) {
+            case ITEMS:
+                return JsonData.CONTENT_TYPE;
+            case ITEMS_ID:
+                return JsonData.CONTENT_ITEM_TYPE;
+            case ITEMS_TYPE:
+                return JsonData.CONTENT_ITEM_TYPE;
+        }
+
         return null;
     }
 

@@ -55,7 +55,7 @@ public class FileManager {
         return result;
     }
 
-    public String readFile(Context context, String filename) {
+    public static String readFile(Context context, String filename) {
         Log.i("FILEMANAGER", "Starting readFile");
         Log.i("FILEMANAGER", "filename: " + filename);
 
