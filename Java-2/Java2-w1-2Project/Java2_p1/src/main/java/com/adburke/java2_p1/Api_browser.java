@@ -20,6 +20,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -40,6 +42,7 @@ public class Api_browser extends Activity {
     // Spinner variables
     public static String[] mListItems;
     public static Spinner selectionSpinner;
+    private static int cycle = 0;
 
     // List View
     public static ListView resultsList;
@@ -59,9 +62,36 @@ public class Api_browser extends Activity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
         selectionSpinner.setAdapter(spinnerAdapter);
+        selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0 || cycle == 1) {
+
+                    Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
+                    String queryStr = parent.getItemAtPosition(position).toString();
+                    Uri uriFilter = null;
+
+                    // Create uri to pass to onListUpdate based on the selection
+                    uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + queryStr);
+                    onListUpdate(uriFilter);
+
+
+                    cycle = 1;
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         // ListView
         resultsList = (ListView)findViewById(R.id.resultsList);
+
 
         Handler jsonServiceHandler = new Handler() {
 
@@ -101,6 +131,8 @@ public class Api_browser extends Activity {
         Intent startJsonDataIntent = new Intent(this, JsonDataService.class);
         startJsonDataIntent.putExtra(JsonDataService.MESSENGER_KEY, jsonServiceMessenger);
         startService(startJsonDataIntent);
+
+
     }
 
     // Update list with api data

@@ -54,7 +54,7 @@ public class CollectionProvider extends ContentProvider{
     static {
         uriMatcher.addURI(AUTHORITY, "items/", ITEMS);
         uriMatcher.addURI(AUTHORITY, "items/#", ITEMS_ID);
-        uriMatcher.addURI(AUTHORITY, "items/type/", ITEMS_TYPE);
+        uriMatcher.addURI(AUTHORITY, "items/type/*", ITEMS_TYPE);
     }
 
 
@@ -109,7 +109,7 @@ public class CollectionProvider extends ContentProvider{
 
         switch (uriMatcher.match(uri)) {
             case ITEMS:
-
+                Log.i("ITEMS URI", "Executed");
                 for (int i = 0, j = resultsArray.length(); i < j; i++) {
                     try {
                         siteDetails = resultsArray.getJSONObject(i).getJSONArray("sitedetails");
@@ -157,6 +157,32 @@ public class CollectionProvider extends ContentProvider{
                 break;
 
             case ITEMS_TYPE:
+                Log.i("ITEMS_TYPE URI", "Executed");
+                // Get the last segment value from the uri in this case the string number
+                String itemType = uri.getLastPathSegment();
+
+                Log.i("ITEM_TYPE URI", "Type= " + itemType);
+                // Filter by item type
+                for (int i = 0, j = resultsArray.length(); i < j; i++) {
+
+
+                    try {
+                        //Log.i("ITEMS_TYPE CATS", resultsArray.getJSONObject(i).get("category").toString());
+                        if (resultsArray.getJSONObject(i).get("category").equals(itemType)) {
+
+                            siteDetails = resultsArray.getJSONObject(i).getJSONArray("sitedetails");
+                            latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
+
+                            result.addRow(new Object[]{i + 1, resultsArray.getJSONObject(i).get("name"),
+                                    latestOffers.getJSONObject(0).get("seller"), latestOffers.getJSONObject(0).get("price")});
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                break;
 
 
         }
