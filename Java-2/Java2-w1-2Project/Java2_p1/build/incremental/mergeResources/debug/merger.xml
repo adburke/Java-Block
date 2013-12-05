@@ -7545,6 +7545,16 @@ Unlocked Phones
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
+            <file
+                name="gplaypatter_repeating"
+                path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/src/main/res/drawable-hdpi/gplaypatter_repeating.xml"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gplaypattern"
+                path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/src/main/res/drawable-hdpi/gplaypattern.png"
+                qualifiers="hdpi"
+                type="drawable" />
         </source>
         <source path="/Users/aaronburke/AndroidStudioProjects/Java-Block/Java-2/Java2-w1-2Project/Java2_p1/build/res/rs/debug" />
     </dataSet>

@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,6 +33,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class Api_browser extends Activity {
@@ -189,12 +193,34 @@ public class Api_browser extends Activity {
             }
         }
         // Create the adapter from the ArrayList of HashMaps and map to the list_row xml layout
-        SimpleAdapter adapter = new SimpleAdapter(this, productList, R.layout.list_row,
+        ProductListAdapter adapter = new ProductListAdapter(this, productList, R.layout.list_row,
                 new String[]{"productName", "vendor", "productPrice"}, new int[]{R.id.productName, R.id.vendor, R.id.productPrice});
         // Add the adapter to the ListView
         resultsList.setAdapter(adapter);
         selectionSpinner.setEnabled(true);
         queryAllBtn.setEnabled(true);
+    }
+    // Extend SimpleAdapter to create zebra coloring on rows
+    public class ProductListAdapter extends SimpleAdapter {
+
+        public ProductListAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
+            super(context, data, resource, from, to);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            // Get reference to the row
+            View view = super.getView(position, convertView, parent);
+            // Check for odd or even to set alternate colors to the row background
+            if(position % 2 == 0){
+                view.setBackgroundColor(Color.rgb(238, 233, 233));
+            }
+            else {
+                view.setBackgroundColor(Color.rgb(255, 255, 255));
+            }
+            return view;
+        }
     }
 
 }
