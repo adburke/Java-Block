@@ -54,7 +54,7 @@ public class Api_browser extends Activity {
     // Spinner variables
     public static String[] mListItems;
     public static Spinner selectionSpinner;
-    public static Boolean spinSelect;
+    public int spinnerIndex;
 
     // List View
     public static ListView resultsList;
@@ -76,15 +76,12 @@ public class Api_browser extends Activity {
 
         mListItems = getResources().getStringArray(R.array.selection_array);
 
-        // Button
-        queryAllBtn = (Button)findViewById(R.id.showAllBtn);
-        queryAllBtn.setEnabled(false);
-        queryAllBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
-            }
-        });
+        // Check for spinner position so it does not fire when screen rotation occurs
+        if (savedInstanceState != null) {
+            spinnerIndex = savedInstanceState.getInt("spinnerIndex");
+        } else {
+            spinnerIndex = -1;
+        }
 
         // Spinner
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
@@ -96,24 +93,34 @@ public class Api_browser extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position != 0 ) {
+                if (position != 0 && spinnerIndex != selectionSpinner.getSelectedItemPosition()) {
 
                     Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
                     String queryStr = parent.getItemAtPosition(position).toString();
                     Uri uriFilter = null;
-
                     // Create uri to pass to onListUpdate based on the selection
                     uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + queryStr);
                     onListUpdate(uriFilter);
-
-                } else {
-                    spinSelect = false;
+                    if (savedInstanceState != null) {
+                        spinnerIndex = selectionSpinner.getSelectedItemPosition();
+                    }
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        // Button
+        queryAllBtn = (Button)findViewById(R.id.showAllBtn);
+        queryAllBtn.setEnabled(false);
+        queryAllBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
+                selectionSpinner.setSelection(0);
             }
         });
 
@@ -260,7 +267,7 @@ public class Api_browser extends Activity {
         super.onSaveInstanceState(savedInstanceState);
 
         savedInstanceState.putBoolean("status", writeStatus);
-        savedInstanceState.putBoolean("spinStatus", true);
+        savedInstanceState.putInt("spinnerIndex", selectionSpinner.getSelectedItemPosition());
 
         if(productList != null && !productList.isEmpty()) {
             savedInstanceState.putSerializable("savedList", (Serializable) productList);
