@@ -13,6 +13,7 @@ package com.adburke.java2_p1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
@@ -20,7 +21,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,11 +34,11 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class Api_browser extends Activity {
     static Context mContext;
@@ -43,7 +46,7 @@ public class Api_browser extends Activity {
     static String mJsonFile = "json_data.txt";
 
     // Can be used to tell if the file has already been created on the device
-    Boolean writeStatus = false;
+    public static Boolean writeStatus;
 
     // Query All Button
     public static Button queryAllBtn;
@@ -51,17 +54,23 @@ public class Api_browser extends Activity {
     // Spinner variables
     public static String[] mListItems;
     public static Spinner selectionSpinner;
+    public static Boolean spinSelect;
 
     // List View
     public static ListView resultsList;
 
+    // ArrayList of hashmaps for listview
+    public ArrayList<HashMap<String, String>> productList;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.api_browser);
 
         // Initialize context
         mContext = this;
+
+        writeStatus = false;
 
         Boolean status = ConnectionStatus.getNetworkStatus(mContext);
 
@@ -86,7 +95,8 @@ public class Api_browser extends Activity {
         selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
+
+                if (position != 0 ) {
 
                     Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
                     String queryStr = parent.getItemAtPosition(position).toString();
@@ -96,6 +106,8 @@ public class Api_browser extends Activity {
                     uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + queryStr);
                     onListUpdate(uriFilter);
 
+                } else {
+                    spinSelect = false;
                 }
             }
 
@@ -105,10 +117,26 @@ public class Api_browser extends Activity {
             }
         });
 
-
         // ListView
         resultsList = (ListView)findViewById(R.id.resultsList);
 
+        // Use saved instance data if available
+        if (savedInstanceState != null) {
+            Log.i("API BROWSER", "Using Saved Instance");
+
+            writeStatus = (savedInstanceState.getBoolean("status"));
+            productList = (ArrayList<HashMap<String, String>>) savedInstanceState.getSerializable("savedList");
+
+            if (productList != null) {
+                Log.i("SAVED INSTANCE", "Product list recreation");
+                ProductListAdapter adapter = new ProductListAdapter(this, productList, R.layout.list_row,
+                        new String[]{"productName", "vendor", "productPrice"}, new int[]{R.id.productName, R.id.vendor, R.id.productPrice});
+                // Add the adapter to the ListView
+                resultsList.setAdapter(adapter);
+                selectionSpinner.setEnabled(true);
+                queryAllBtn.setEnabled(true);
+            }
+        }
 
         Handler jsonServiceHandler = new Handler() {
 
@@ -117,7 +145,6 @@ public class Api_browser extends Activity {
                 //TODO: Handle different types of messages
                 String results = null;
                 Uri initialUri = null;
-                writeStatus = false;
 
                 if (msg.arg1 == RESULT_OK && msg.obj != null) {
                     Log.i("JSON HANDLER", "Service Completed Successfully");
@@ -135,23 +162,21 @@ public class Api_browser extends Activity {
 
                     }
 
-                    // Used to test FileManager readFile
-//                    if (writeStatus) {
-//                        m_file.readFile(m_context, m_json_file);
-//                    }
                 }
 
             }
         };
+
+        // Check for file and network status
         if (!writeStatus && status) {
 
             Messenger jsonServiceMessenger = new Messenger(jsonServiceHandler);
             Intent startJsonDataIntent = new Intent(this, JsonDataService.class);
             startJsonDataIntent.putExtra(JsonDataService.MESSENGER_KEY, jsonServiceMessenger);
             startService(startJsonDataIntent);
-        } else if (writeStatus) {
+        } else if (writeStatus && savedInstanceState == null) {
             onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
-        } else {
+        } else if (!status) {
             Toast.makeText(this, "No network connection found and no local data to display.", Toast.LENGTH_LONG).show();
         }
 
@@ -161,7 +186,7 @@ public class Api_browser extends Activity {
     // Update list with api data
     public void onListUpdate(Uri uri) {
 
-        ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String, String>>();
+        productList = new ArrayList<HashMap<String, String>>();
 
         // Get cursor and URI
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);
@@ -221,6 +246,31 @@ public class Api_browser extends Activity {
             }
             return view;
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setContentView(R.layout.api_browser);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putBoolean("status", writeStatus);
+        savedInstanceState.putBoolean("spinStatus", true);
+
+        if(productList != null && !productList.isEmpty()) {
+            savedInstanceState.putSerializable("savedList", (Serializable) productList);
+        }
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
     }
 
 }
