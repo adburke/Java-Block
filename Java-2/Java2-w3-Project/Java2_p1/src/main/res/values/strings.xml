@@ -14,4 +14,7 @@
         <item>Unlocked Phones</item>
     </string-array>
 
+    <string name="title_activity_product_list_detail">ProductListDetail</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>

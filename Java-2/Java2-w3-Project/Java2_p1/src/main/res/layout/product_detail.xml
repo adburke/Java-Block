@@ -1,0 +1,18 @@
+<!--
+  ~ Project:		Java2-w3-Project
+  ~
+  ~ Package:		Java2_p1
+  ~
+  ~ Author:		    aaronburke
+  ~
+  ~ Date:			12 11, 2013
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gplaypatter_repeating"
+    tools:context=".ProductListDetail"
+    tools:ignore="MergeRootFrame" />

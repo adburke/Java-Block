@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="19" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,7 +20,6 @@
         <activity
             android:name="com.adburke.java2_p1.Api_browser"
             android:label="@string/app_name" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,14 +28,18 @@
         </activity>
 
         <service
-            android:name=".JsonDataService"
-            android:exported="false"/>
+            android:name="com.adburke.java2_p1.JsonDataService"
+            android:exported="false" />
 
         <provider
+            android:name="com.adburke.java2_p1.CollectionProvider"
             android:authorities="com.adburke.java2_p1.CollectionProvider"
-            android:name=".CollectionProvider"
             android:exported="true" />
 
+        <activity
+            android:name="com.adburke.java2_p1.ProductListDetail"
+            android:label="@string/title_activity_product_list_detail" >
+        </activity>
     </application>
 
 </manifest>
