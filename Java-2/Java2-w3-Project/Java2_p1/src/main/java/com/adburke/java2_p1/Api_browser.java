@@ -80,7 +80,7 @@ public class Api_browser extends Activity {
         if (savedInstanceState != null) {
             spinnerIndex = savedInstanceState.getInt("spinnerIndex");
         } else {
-            spinnerIndex = -1;
+            spinnerIndex = 0;
         }
 
         // Spinner
@@ -135,6 +135,8 @@ public class Api_browser extends Activity {
                 Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
                 // Attach index data of selected product
                 productDetailActivity.putExtra("index", position);
+                productDetailActivity.putExtra("filterString", selectionSpinner.getSelectedItem().toString());
+                productDetailActivity.putExtra("filterIndex", selectionSpinner.getSelectedItemPosition());
 
                 startActivityForResult(productDetailActivity, 0);
 
@@ -260,10 +262,14 @@ public class Api_browser extends Activity {
             View view = super.getView(position, convertView, parent);
             // Check for odd or even to set alternate colors to the row background
             if(position % 2 == 0){
-                view.setBackgroundColor(Color.rgb(238, 233, 233));
+                if (view != null) {
+                    view.setBackgroundColor(Color.rgb(238, 233, 233));
+                }
             }
             else {
-                view.setBackgroundColor(Color.rgb(255, 255, 255));
+                if (view != null) {
+                    view.setBackgroundColor(Color.rgb(255, 255, 255));
+                }
             }
             return view;
         }

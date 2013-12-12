@@ -33,7 +33,13 @@ import java.util.HashMap;
 
 public class ProductListDetail extends ActionBarActivity {
     static Context mContext;
+
+    // Passed in values from Product List selection
     int productIndex;
+    int filterIndex;
+    String filterString;
+
+    // Holds Cursor data from content provider
     HashMap<String, String> productInfo;
 
     @Override
@@ -51,9 +57,18 @@ public class ProductListDetail extends ActionBarActivity {
         Bundle incomingData = getIntent().getExtras();
         if (incomingData != null) {
             productIndex = incomingData.getInt("index");
-            //Toast.makeText(mContext, "Product Index: " + productIndex, Toast.LENGTH_LONG).show();
+            Log.i("productIndex", String.valueOf(productIndex));
+            filterIndex = incomingData.getInt("filterIndex");
+            Log.i("filterIndex", String.valueOf(filterIndex));
+            filterString = incomingData.getString("filterString");
+            Log.i("filterString", filterString);
+
             // Create URI for product call to capture data
-            productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/" + productIndex);
+            if (filterIndex == 0) {
+                productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/" + productIndex);
+            } else {
+                productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + productIndex);
+            }
         }
 
         if (productUri != null) {
@@ -63,7 +78,7 @@ public class ProductListDetail extends ActionBarActivity {
             // Check if the cursor returned values
             if (cursor == null) {
                 Toast.makeText(this, "Cursor value is null", Toast.LENGTH_LONG).show();
-                Log.i("onListUpdate", "NULL CURSOR AT: " + productUri.toString());
+                Log.i("ProductListDetail", "NULL CURSOR AT: " + productUri.toString());
             }
             // Clear the product list of values if already created
             if (productInfo != null) {
@@ -90,6 +105,7 @@ public class ProductListDetail extends ActionBarActivity {
             }
             if (productInfo != null) {
                 Log.i("PRODUCT DETAIL", "VALUES: " + productInfo.values().toString());
+
             }
 
         }

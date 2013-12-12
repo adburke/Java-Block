@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Java2_p1</string>
+    <string name="main_screen_title">Product List</string>
+    <string name="detail_screen_title">Product Details</string>
     <string name="all_btn">Show All</string>
     <string name="main_text">Choose a search filter:</string>
     <string name="action_settings">Settings</string>

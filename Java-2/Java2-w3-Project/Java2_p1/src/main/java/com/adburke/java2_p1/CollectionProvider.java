@@ -25,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class CollectionProvider extends ContentProvider{
 
     public static final String AUTHORITY = "com.adburke.java2_p1.CollectionProvider";
@@ -55,6 +57,7 @@ public class CollectionProvider extends ContentProvider{
     public static final int ITEMS = 1;
     public static final int ITEMS_ID = 2;
     public static final int ITEMS_TYPE = 3;
+    public static final int ITEMS_TYPE_ID = 4;
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -62,6 +65,7 @@ public class CollectionProvider extends ContentProvider{
         uriMatcher.addURI(AUTHORITY, "items/", ITEMS);
         uriMatcher.addURI(AUTHORITY, "items/#", ITEMS_ID);
         uriMatcher.addURI(AUTHORITY, "items/type/*", ITEMS_TYPE);
+        uriMatcher.addURI(AUTHORITY, "items/type/*/#", ITEMS_TYPE_ID);
     }
 
 
@@ -184,7 +188,6 @@ public class CollectionProvider extends ContentProvider{
                 // Filter by item type
                 for (int i = 0, j = resultsArray.length(); i < j; i++) {
 
-
                     try {
                         //Log.i("ITEMS_TYPE CATS", resultsArray.getJSONObject(i).get("category").toString());
                         if (resultsArray.getJSONObject(i).get("category").equals(itemType)) {
@@ -202,6 +205,58 @@ public class CollectionProvider extends ContentProvider{
 
                 }
                 return listResult;
+
+            case ITEMS_TYPE_ID:
+                Log.i("ITEMS_TYPE URI", "Executed");
+
+                // Get all segment values
+                List<String> uriSegments = uri.getPathSegments();
+                Log.i("URI SEGMENTS", uriSegments.toString());
+
+                // Get segment values
+                String indexStr = uriSegments.get(3);
+                int index = Integer.parseInt(indexStr);
+                String filterString = uriSegments.get(2);
+
+                // Create new filtered results array
+                JSONArray filteredArray = new JSONArray();
+
+                // Run through file results to pull out the correct filtered objects and place in filteredArray
+                for (int i = 0, j = resultsArray.length(); i < j; i++) {
+                    try {
+                        //Log.i("ITEMS_TYPE CATS", resultsArray.getJSONObject(i).get("category").toString());
+                        if (resultsArray.getJSONObject(i).get("category").equals(filterString)) {
+                            filteredArray.put(resultsArray.getJSONObject(i));
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                // Pass the correct product data from the filtered results array list
+                try {
+                    siteDetails = filteredArray.getJSONObject(index).getJSONArray("sitedetails");
+                    latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
+
+                    detailResult.addRow(new Object[]{index,
+                            filteredArray.getJSONObject(index).get("name"),
+                            latestOffers.getJSONObject(0).get("seller"),
+                            latestOffers.getJSONObject(0).get("price"),
+                            filteredArray.getJSONObject(index).get("color"),
+                            filteredArray.getJSONObject(index).get("mpn"),
+                            filteredArray.getJSONObject(index).get("upc"),
+                            filteredArray.getJSONObject(index).get("manufacturer"),
+                            siteDetails.getJSONObject(0).get("url")});
+
+                    //Log.i("DETAIL RESULTS LOG", "name: " + resultsArray.getJSONObject(indexVal).get("name"));
+                    //Log.i("DETAIL RESULTS LOG", "seller: " + latestOffers.getJSONObject(0).get("seller"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return detailResult;
+
         }
 
         return null;
