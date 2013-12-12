@@ -126,6 +126,15 @@ public class Api_browser extends Activity {
 
         // ListView
         resultsList = (ListView)findViewById(R.id.resultsList);
+        resultsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(mContext,
+                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
 
         // Use saved instance data if available
         if (savedInstanceState != null) {
