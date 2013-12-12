@@ -8,29 +8,119 @@
   ~ Date:			12 11, 2013
   -->
 
-<LinearLayout
+<TableLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow
+        android:id="@+id/detailTableRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/productDetailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name" />
+    </TableRow>
 
-    <TextView
+    <TableRow
+        android:id="@+id/detailTableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rowVendor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Vendor:" />
+        <TextView
+            android:id="@+id/productDetailVendor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detailTableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rowPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Price:" />
+        <TextView
+            android:id="@+id/productDetailPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detailTableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rowMpn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="MPN:" />
+        <TextView
+            android:id="@+id/productDetailMpn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detailTableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rowUpc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="UPC:" />
+        <TextView
+            android:id="@+id/productDetailUpc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detailTableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/rowMfr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Mfr:" />
+        <TextView
+            android:id="@+id/productDetailMfr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detailTableRow7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/productDetailName" />
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/webLaunchBtn"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="New Button" />
+    </TableRow>
 
-    <ListView
-        android:id="@+id/productDetailList"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/webLaunchBtn" />
-
-</LinearLayout>
+</TableLayout>

@@ -16,6 +16,14 @@
         <item>Unlocked Phones</item>
     </string-array>
 
+    <string-array name="detail_categories_array">
+        <item>Vendor:</item>
+        <item>Price:</item>
+        <item>MPN:</item>
+        <item>UPC:</item>
+        <item>Mfr:</item>
+    </string-array>
+
     <string name="title_activity_product_list_detail">ProductListDetail</string>
     <string name="hello_world">Hello world!</string>
 
