@@ -73,15 +73,25 @@ public class ProductListDetail extends ActionBarActivity {
             if (cursor != null) {
                 if (cursor.moveToFirst()) {
                     for (int i = 0, j = cursor.getCount(); i < j; i++) {
-                        HashMap<String, String> productInfo = new HashMap<String, String>();
+                        productInfo = new HashMap<String, String>();
 
                         productInfo.put("productName", cursor.getString(1));
                         productInfo.put("vendor", cursor.getString(2));
                         productInfo.put("productPrice", cursor.getString(3));
+                        productInfo.put("productColor", cursor.getString(4));
+                        productInfo.put("productMpn", cursor.getString(5));
+                        productInfo.put("productUpc", cursor.getString(6));
+                        productInfo.put("productManufacturer", cursor.getString(7));
+                        productInfo.put("productUrl", cursor.getString(8));
 
                     }
                 }
+
             }
+            if (productInfo != null) {
+                Log.i("PRODUCT DETAIL", "VALUES: " + productInfo.values().toString());
+            }
+
         }
 
 

@@ -39,8 +39,15 @@ public class CollectionProvider extends ContentProvider{
         public static final String NAME_COLUMN = "productName";
         public static final String VENDOR_COLUMN = "vendor";
         public static final String PRICE_COLUMN = "productPrice";
+        public static final String COLOR_COLUMN = "productColor";
+        public static final String MPN_COLUMN = "productMpn";
+        public static final String UPC_COLUMN = "productUpc";
+        public static final String MANUFACTURER_COLUMN = "productManufacturer";
+        public static final String URL_COLUMN = "productUrl";
 
-        public static final String[] PROJECTION = {"_Id", NAME_COLUMN, VENDOR_COLUMN, PRICE_COLUMN};
+        public static final String[] LIST_PROJECTION = {"_Id", NAME_COLUMN, VENDOR_COLUMN, PRICE_COLUMN};
+        public static final String[] DETAIL_PROJECTION = {"_Id", NAME_COLUMN, VENDOR_COLUMN, PRICE_COLUMN,
+                COLOR_COLUMN, MPN_COLUMN, UPC_COLUMN, MANUFACTURER_COLUMN, URL_COLUMN};
 
         private JsonData() {};
     }
@@ -88,7 +95,8 @@ public class CollectionProvider extends ContentProvider{
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
-        MatrixCursor result = new MatrixCursor(JsonData.PROJECTION);
+        MatrixCursor listResult = new MatrixCursor(JsonData.LIST_PROJECTION);
+        MatrixCursor detailResult = new MatrixCursor(JsonData.DETAIL_PROJECTION);
 
         String JSONString = FileManager.readFile(getContext(), Api_browser.mJsonFile);
         JSONObject query = null;
@@ -104,7 +112,7 @@ public class CollectionProvider extends ContentProvider{
         }
 
         if (resultsArray == null) {
-            return result;
+            return null;
         }
 
         switch (uriMatcher.match(uri)) {
@@ -115,16 +123,17 @@ public class CollectionProvider extends ContentProvider{
                         siteDetails = resultsArray.getJSONObject(i).getJSONArray("sitedetails");
                         latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
 
-                        result.addRow(new Object[] {i+1,resultsArray.getJSONObject(i).get("name"),
+                        listResult.addRow(new Object[] {i+1,resultsArray.getJSONObject(i).get("name"),
                             latestOffers.getJSONObject(0).get("seller"), latestOffers.getJSONObject(0).get("price") });
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                break;
-            case ITEMS_ID:
+                return listResult;
 
+            case ITEMS_ID:
+                Log.i("ITEMS_ID URI", "Executed");
                 // Get the last segment value from the uri in this case the string number
                 String itemId = uri.getLastPathSegment();
 
@@ -138,23 +147,33 @@ public class CollectionProvider extends ContentProvider{
                 }
 
                 // Check if the item id is with valid range of results
-                if (indexVal <= 0 || indexVal > resultsArray.length()) {
+                if (indexVal < 0 || indexVal > resultsArray.length()) {
                     Log.e("ITEMS_ID URI", "ID number not within valid range");
                     break;
                 }
 
                 try {
 
-                    siteDetails = resultsArray.getJSONObject(indexVal - 1).getJSONArray("sitedetails");
+                    siteDetails = resultsArray.getJSONObject(indexVal).getJSONArray("sitedetails");
                     latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
 
-                    result.addRow(new Object[] {indexVal,resultsArray.getJSONObject(indexVal - 1).get("name"),
-                            latestOffers.getJSONObject(0).get("seller"), latestOffers.getJSONObject(0).get("price") });
+                    detailResult.addRow(new Object[]{indexVal,
+                            resultsArray.getJSONObject(indexVal).get("name"),
+                            latestOffers.getJSONObject(0).get("seller"),
+                            latestOffers.getJSONObject(0).get("price"),
+                            resultsArray.getJSONObject(indexVal).get("color"),
+                            resultsArray.getJSONObject(indexVal).get("mpn"),
+                            resultsArray.getJSONObject(indexVal).get("upc"),
+                            resultsArray.getJSONObject(indexVal).get("manufacturer"),
+                            siteDetails.getJSONObject(0).get("url")});
+
+                    //Log.i("DETAIL RESULTS LOG", "name: " + resultsArray.getJSONObject(indexVal).get("name"));
+                    //Log.i("DETAIL RESULTS LOG", "seller: " + latestOffers.getJSONObject(0).get("seller"));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
+                return detailResult;
 
             case ITEMS_TYPE:
                 Log.i("ITEMS_TYPE URI", "Executed");
@@ -173,7 +192,7 @@ public class CollectionProvider extends ContentProvider{
                             siteDetails = resultsArray.getJSONObject(i).getJSONArray("sitedetails");
                             latestOffers = siteDetails.getJSONObject(0).getJSONArray("latestoffers");
 
-                            result.addRow(new Object[]{i + 1, resultsArray.getJSONObject(i).get("name"),
+                            listResult.addRow(new Object[]{i + 1, resultsArray.getJSONObject(i).get("name"),
                                     latestOffers.getJSONObject(0).get("seller"), latestOffers.getJSONObject(0).get("price")});
                         }
 
@@ -182,13 +201,10 @@ public class CollectionProvider extends ContentProvider{
                     }
 
                 }
-                break;
-
-
+                return listResult;
         }
 
-        Log.i("CURSOR ITEMS", result.toString());
-        return result;
+        return null;
     }
 
     /**
