@@ -35,9 +35,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbc430b9-0b77-48c9-8340-e8676de7449d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" afterPath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/build.gradle" afterPath="$PROJECT_DIR$/Java2_p1/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" afterPath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
     </list>
     <ignored path="build.gradle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,33 +99,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Api_browser.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Api_browser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="66" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.81900454" vertical-offset="927" max-vertical-offset="3915">
+            <state line="227" column="51" selection-start="8373" selection-end="8404" vertical-scroll-proportion="0.0" vertical-offset="2352" max-vertical-offset="3915">
               <folding>
                 <element signature="e#4315#4974#0" expanded="true" />
                 <element signature="e#4963#4964#0" expanded="true" />
+                <element signature="e#8418#8434#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectionProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="2637" max-vertical-offset="3450">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductListDetail.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ProductListDetail.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="5" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
+            <state line="66" column="13" selection-start="2094" selection-end="2094" vertical-scroll-proportion="0.520362" vertical-offset="360" max-vertical-offset="1455">
               <folding>
-                <element signature="e#0#1374#0" expanded="true" />
+                <element signature="e#0#3277#0" expanded="true" />
+                <element signature="e#2477#2493#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,6 +145,15 @@
           </provider>
           <provider editor-type-id="android-designer">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="13" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="3450">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -525,10 +525,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml" />
         <option value="$PROJECT_DIR$/Java2_p1/build.gradle" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" />
+        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
       </list>
     </option>
   </component>
@@ -1056,15 +1056,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="5" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-          <folding>
-            <element signature="e#0#1374#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
@@ -1095,10 +1086,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="66" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.81900454" vertical-offset="927" max-vertical-offset="3915">
+        <state line="227" column="51" selection-start="8373" selection-end="8404" vertical-scroll-proportion="0.0" vertical-offset="2352" max-vertical-offset="3915">
           <folding>
             <element signature="e#4315#4974#0" expanded="true" />
             <element signature="e#4963#4964#0" expanded="true" />
+            <element signature="e#8418#8434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="13" selection-start="2094" selection-end="2094" vertical-scroll-proportion="0.520362" vertical-offset="360" max-vertical-offset="1455">
+          <folding>
+            <element signature="e#0#3277#0" expanded="true" />
+            <element signature="e#2477#2493#0" expanded="true" />
           </folding>
         </state>
       </provider>
