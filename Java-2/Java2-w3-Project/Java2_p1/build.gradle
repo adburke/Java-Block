@@ -24,4 +24,5 @@ android {
 
 dependencies {
 	compile 'com.android.support:appcompat-v7:+'
+    compile files ('libs/commons-codec-1.7.jar','libs/signpost-core-1.2.1.2.jar')
 }

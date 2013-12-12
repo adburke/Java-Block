@@ -130,9 +130,14 @@ public class Api_browser extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(mContext,
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                //Toast.makeText(mContext, "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+                // Create intent for new activity
+                Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
+                // Attach index data of selected product
+                productDetailActivity.putExtra("index", position);
+
+                startActivityForResult(productDetailActivity, 0);
+
             }
         });
 
