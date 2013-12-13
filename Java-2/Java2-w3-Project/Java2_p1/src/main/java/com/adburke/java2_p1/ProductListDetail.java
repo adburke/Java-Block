@@ -17,26 +17,15 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.Serializable;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+
 
 public class ProductListDetail extends ActionBarActivity {
     static Context mContext;
@@ -106,6 +95,7 @@ public class ProductListDetail extends ActionBarActivity {
         row6.setText(detailStrings[4]);
         row7.setText(detailStrings[5]);
 
+        // Set button text
         webLaunchBtn.setText(R.string.webBtn);
 
         // Capture incoming data
@@ -126,7 +116,8 @@ public class ProductListDetail extends ActionBarActivity {
             }
         }
 
-        if (productUri != null) {
+        // Check for valid cursor or saved data
+        if (productUri != null && savedInstanceState == null) {
             // Call the ContentProvider with the relevant URI
             Cursor cursor = getContentResolver().query(productUri, null, null, null, null);
 
@@ -171,6 +162,17 @@ public class ProductListDetail extends ActionBarActivity {
 
             }
 
+        } else {
+            Log.i("PRODUCT_LIST_DETAIL", "Using Saved Data");
+            productInfo = (HashMap<String, String>) savedInstanceState.getSerializable("savedList");
+
+            productName.setText(productInfo.get("productName"));
+            vendor.setText(productInfo.get("vendor"));
+            price.setText(productInfo.get("productPrice"));
+            color.setText(productInfo.get("productColor"));
+            mpn.setText(productInfo.get("productMpn"));
+            upc.setText(productInfo.get("productUpc"));
+            mfr.setText(productInfo.get("productManufacturer"));
         }
 
         webLaunchBtn.setOnClickListener(new View.OnClickListener() {
@@ -188,7 +190,7 @@ public class ProductListDetail extends ActionBarActivity {
 
 
     }
-
+    // Method to pass data back to API BROWSER page
     @Override
     public void finish() {
         Intent data = new Intent();
@@ -207,6 +209,10 @@ public class ProductListDetail extends ActionBarActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
+
+        if(productInfo != null && !productInfo.isEmpty()) {
+            savedInstanceState.putSerializable("savedList", (Serializable) productInfo);
+        }
 
     }
 
