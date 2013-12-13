@@ -206,6 +206,16 @@ public class Api_browser extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == 0) {
+            Bundle result = data.getExtras();
+            if (result != null) {
+                Log.i("RETURN ACTIVITY", result.getString("FINISHED"));
+            }
+        }
+    }
+
     // Update list with api data
     public void onListUpdate(Uri uri) {
 

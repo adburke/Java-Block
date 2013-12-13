@@ -42,7 +42,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbc430b9-0b77-48c9-8340-e8676de7449d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/Java2_p1.iml" afterPath="$PROJECT_DIR$/Java2_p1/Java2_p1.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" afterPath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" afterPath="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml" afterPath="$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -108,109 +109,65 @@
     <favorites_list name="build.gradle" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.50625">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="Api_browser.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="122" column="19" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.0" vertical-offset="1830" max-vertical-offset="4635">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ProductListDetail.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="48" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1725">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="list_row.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/list_row.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="17" selection-start="787" selection-end="787" vertical-scroll-proportion="-13.148149" vertical-offset="125" max-vertical-offset="690">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="api_browser.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/api_browser.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="41" selection-start="1449" selection-end="1571" vertical-scroll-proportion="-15.37037" vertical-offset="260" max-vertical-offset="825">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="41" selection-start="642" selection-end="642" vertical-scroll-proportion="0.46632123" vertical-offset="0" max-vertical-offset="579">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/AndroidManifest.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="40" column="54" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="765">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="product_detail.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="125" column="13" selection-start="4235" selection-end="4235" vertical-scroll-proportion="-17.592592" vertical-offset="1400" max-vertical-offset="1965">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CollectionProvider.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="213" column="62" selection-start="9194" selection-end="9194" vertical-scroll-proportion="0.0" vertical-offset="3195" max-vertical-offset="4815">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="product_detail.xml" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="38" selection-start="900" selection-end="900" vertical-scroll-proportion="0.33628318" vertical-offset="275" max-vertical-offset="1965">
-                  <folding />
-                </state>
-              </provider>
-              <provider editor-type-id="android-designer">
-                <state />
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Api_browser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="212" column="30" selection-start="8028" selection-end="8028" vertical-scroll-proportion="1.785473" vertical-offset="1463" max-vertical-offset="4125">
+              <folding>
+                <element signature="e#3925#4183#0" expanded="true" />
+                <element signature="e#4172#4173#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductListDetail.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="196" column="23" selection-start="6890" selection-end="6890" vertical-scroll-proportion="0.0" vertical-offset="2490" max-vertical-offset="3375">
+              <folding>
+                <element signature="e#0#7375#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3199#3214#0" expanded="true" />
+                <element signature="e#6253#6687#0" expanded="true" />
+                <element signature="e#6676#6677#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product_detail.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="129" column="17" selection-start="4799" selection-end="4799" vertical-scroll-proportion="-35.925926" vertical-offset="965" max-vertical-offset="2160">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollectionProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="213" column="62" selection-start="9194" selection-end="9194" vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="4485">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="54" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="765">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -580,15 +537,16 @@
       <list>
         <option value="$PROJECT_DIR$/Java2_p1/build.gradle" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java" />
-        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml" />
+        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java" />
+        <option value="$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-12" />
     <option name="y" value="22" />
     <option name="width" value="1920" />
     <option name="height" value="1178" />
@@ -1070,13 +1028,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
+    <frame x="-12" y="22" width="1920" height="1178" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14583333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14583333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1084,15 +1042,15 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297769" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42751616" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42751616" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297769" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963988" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1169,16 +1127,9 @@
         <state line="26" column="81" selection-start="498" selection-end="498" vertical-scroll-proportion="0.3888335" vertical-offset="0" max-vertical-offset="1003" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="19" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="4005">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/list_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="17" selection-start="787" selection-end="787" vertical-scroll-proportion="-13.148149" vertical-offset="125" max-vertical-offset="690">
+        <state line="129" column="17" selection-start="4799" selection-end="4799" vertical-scroll-proportion="-35.925926" vertical-offset="965" max-vertical-offset="2160">
           <folding />
         </state>
       </provider>
@@ -1186,9 +1137,33 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="62" selection-start="9194" selection-end="9194" vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="4485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="20" selection-start="772" selection-end="772" vertical-scroll-proportion="0.5574324" vertical-offset="0" max-vertical-offset="592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/api_browser.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="41" selection-start="1449" selection-end="1571" vertical-scroll-proportion="-15.37037" vertical-offset="260" max-vertical-offset="825">
+        <state line="37" column="12" selection-start="1332" selection-end="1364" vertical-scroll-proportion="0.5221239" vertical-offset="260" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/list_row.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="17" selection-start="787" selection-end="787" vertical-scroll-proportion="0.6283186" vertical-offset="125" max-vertical-offset="690">
           <folding />
         </state>
       </provider>
@@ -1198,40 +1173,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="54" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="62" selection-start="9194" selection-end="9194" vertical-scroll-proportion="0.0" vertical-offset="2603" max-vertical-offset="4485">
+        <state line="40" column="54" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="765">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="48" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1725">
-          <folding />
+        <state line="196" column="23" selection-start="6890" selection-end="6890" vertical-scroll-proportion="0.0" vertical-offset="2490" max-vertical-offset="3375">
+          <folding>
+            <element signature="e#0#7375#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3199#3214#0" expanded="true" />
+            <element signature="e#6253#6687#0" expanded="true" />
+            <element signature="e#6676#6677#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="642" selection-end="642" vertical-scroll-proportion="0.46632123" vertical-offset="0" max-vertical-offset="579">
-          <folding />
+        <state line="212" column="30" selection-start="8028" selection-end="8028" vertical-scroll-proportion="1.785473" vertical-offset="1463" max-vertical-offset="4125">
+          <folding>
+            <element signature="e#3925#4183#0" expanded="true" />
+            <element signature="e#4172#4173#0" expanded="true" />
+          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="38" selection-start="900" selection-end="900" vertical-scroll-proportion="0.33628318" vertical-offset="275" max-vertical-offset="1965">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
   </component>

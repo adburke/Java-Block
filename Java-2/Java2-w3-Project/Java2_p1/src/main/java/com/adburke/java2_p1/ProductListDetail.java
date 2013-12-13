@@ -11,7 +11,9 @@
 package com.adburke.java2_p1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -25,11 +27,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ProductListDetail extends ActionBarActivity {
     static Context mContext;
@@ -42,6 +49,24 @@ public class ProductListDetail extends ActionBarActivity {
     // Holds Cursor data from content provider
     HashMap<String, String> productInfo;
 
+    // Layout variables and array containers for each column
+    TextView productName;
+    Button webLaunchBtn;
+
+    TextView row2;
+    TextView row3;
+    TextView row4;
+    TextView row5;
+    TextView row6;
+    TextView row7;
+
+    TextView vendor;
+    TextView price;
+    TextView color;
+    TextView mpn;
+    TextView upc;
+    TextView mfr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +75,38 @@ public class ProductListDetail extends ActionBarActivity {
         // Initialize context
         mContext = this;
 
+        Resources res = getResources();
+        String[] detailStrings = res.getStringArray(R.array.detail_categories_array);
+
         // URI for ContentProvider
         Uri productUri = null;
+
+        // Initialize layout variables and array containers for each column
+        productName = (TextView) findViewById(R.id.productDetailName);
+        webLaunchBtn = (Button) findViewById(R.id.webLaunchBtn);
+
+        row2 = (TextView) findViewById(R.id.rowVendor);
+        row3 = (TextView) findViewById(R.id.rowPrice);
+        row4 = (TextView) findViewById(R.id.rowColor);
+        row5 = (TextView) findViewById(R.id.rowMpn);
+        row6 = (TextView) findViewById(R.id.rowUpc);
+        row7 = (TextView) findViewById(R.id.rowMfr);
+
+        vendor = (TextView) findViewById(R.id.productDetailVendor);
+        price = (TextView) findViewById(R.id.productDetailPrice);
+        color = (TextView) findViewById(R.id.productDetailColor);
+        mpn = (TextView) findViewById(R.id.productDetailMpn);
+        upc = (TextView) findViewById(R.id.productDetailUpc);
+        mfr = (TextView) findViewById(R.id.productDetailMfr);
+
+        row2.setText(detailStrings[0]);
+        row3.setText(detailStrings[1]);
+        row4.setText(detailStrings[2]);
+        row5.setText(detailStrings[3]);
+        row6.setText(detailStrings[4]);
+        row7.setText(detailStrings[5]);
+
+        webLaunchBtn.setText(R.string.webBtn);
 
         // Capture incoming data
         Bundle incomingData = getIntent().getExtras();
@@ -106,12 +161,40 @@ public class ProductListDetail extends ActionBarActivity {
             if (productInfo != null) {
                 Log.i("PRODUCT DETAIL", "VALUES: " + productInfo.values().toString());
 
+                productName.setText(productInfo.get("productName"));
+                vendor.setText(productInfo.get("vendor"));
+                price.setText(productInfo.get("productPrice"));
+                color.setText(productInfo.get("productColor"));
+                mpn.setText(productInfo.get("productMpn"));
+                upc.setText(productInfo.get("productUpc"));
+                mfr.setText(productInfo.get("productManufacturer"));
+
             }
 
         }
 
+        webLaunchBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                //Start Activity to view the selected file
+                Intent intent;
+                intent = new Intent(Intent.ACTION_VIEW);
+                Uri webUri = Uri.parse(productInfo.get("productUrl"));
+                intent.setData(webUri);
+                startActivity(intent);
+            }
+        });
 
 
+
+    }
+
+    @Override
+    public void finish() {
+        Intent data = new Intent();
+        data.putExtra("FINISHED", "PASS VALUE TEST");
+        setResult(RESULT_OK, data);
+        super.finish();
     }
 
     @Override
