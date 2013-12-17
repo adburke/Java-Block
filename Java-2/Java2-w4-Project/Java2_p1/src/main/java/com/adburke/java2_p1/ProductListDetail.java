@@ -27,7 +27,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 
-public class ProductListDetail extends ActionBarActivity {
+public class ProductListDetail extends ActionBarActivity implements ProductDetailFragment.ProductDetailListener {
     static Context mContext;
 
     // Passed in values from Product List selection
@@ -40,7 +40,6 @@ public class ProductListDetail extends ActionBarActivity {
 
     // Layout variables and array containers for each column
     TextView productName;
-    Button webLaunchBtn;
 
     TextView row2;
     TextView row3;
@@ -59,7 +58,7 @@ public class ProductListDetail extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_detail);
+        setContentView(R.layout.productdetailfrag);
 
         // Initialize context
         mContext = this;
@@ -72,7 +71,6 @@ public class ProductListDetail extends ActionBarActivity {
 
         // Initialize layout variables and array containers for each column
         productName = (TextView) findViewById(R.id.productDetailName);
-        webLaunchBtn = (Button) findViewById(R.id.webLaunchBtn);
 
         row2 = (TextView) findViewById(R.id.rowVendor);
         row3 = (TextView) findViewById(R.id.rowPrice);
@@ -94,9 +92,6 @@ public class ProductListDetail extends ActionBarActivity {
         row5.setText(detailStrings[3]);
         row6.setText(detailStrings[4]);
         row7.setText(detailStrings[5]);
-
-        // Set button text
-        webLaunchBtn.setText(R.string.webBtn);
 
         // Capture incoming data
         Bundle incomingData = getIntent().getExtras();
@@ -175,18 +170,6 @@ public class ProductListDetail extends ActionBarActivity {
             mfr.setText(productInfo.get("productManufacturer"));
         }
 
-        webLaunchBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                //Start Activity to view the selected file
-                Intent intent;
-                intent = new Intent(Intent.ACTION_VIEW);
-                Uri webUri = Uri.parse(productInfo.get("productUrl"));
-                intent.setData(webUri);
-                startActivity(intent);
-            }
-        });
-
 
 
     }
@@ -222,4 +205,12 @@ public class ProductListDetail extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onWebLaunchClick() {
+        Intent intent;
+        intent = new Intent(Intent.ACTION_VIEW);
+        Uri webUri = Uri.parse(productInfo.get("productUrl"));
+        intent.setData(webUri);
+        startActivity(intent);
+    }
 }

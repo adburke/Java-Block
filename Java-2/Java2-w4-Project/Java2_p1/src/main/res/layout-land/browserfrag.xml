@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Project:		Java2-w4-Project
+  ~
+  ~ Package:		Java2_p1
+  ~
+  ~ Author:		    aaronburke
+  ~
+  ~ Date:		 	12 16, 2013
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/browser_fragment"
+        android:name="com.adburke.java2_p1.BrowserFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </fragment>
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/productdetail_fragment"
+        android:name="com.adburke.java2_p1.ProductDetailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </fragment>
+
+</LinearLayout>
