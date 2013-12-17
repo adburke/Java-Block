@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Api_browser extends Activity implements BrowserFragment.BrowserListener {
+public class Api_browser extends Activity implements BrowserFragment.BrowserListener, ProductDetailFragment.ProductDetailListener {
     static Context mContext;
     FileManager mFile;
     static String mJsonFile = "json_data.txt";
@@ -234,18 +234,29 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
 
     @Override
     public void onProductSelection(int index, String filterString, int filterIndex) {
-        // Create intent for new activity
-        Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
-        // Attach index data of selected product
-        productDetailActivity.putExtra("index", index);
-        productDetailActivity.putExtra("filterString", filterString);
-        productDetailActivity.putExtra("filterIndex", filterIndex);
+        ProductDetailFragment viewer = (ProductDetailFragment) getFragmentManager()
+                .findFragmentById(R.id.productdetail_fragment);
+        if (viewer == null || !viewer.isInLayout()) {
+            // Create intent for new activity
+            Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
+            // Attach index data of selected product
+            productDetailActivity.putExtra("index", index);
+            productDetailActivity.putExtra("filterString", filterString);
+            productDetailActivity.putExtra("filterIndex", filterIndex);
 
-        startActivityForResult(productDetailActivity, 0);
+            startActivityForResult(productDetailActivity, 0);
+        } else {
+
+        }
     }
 
     @Override
     public void onQueryAll() {
         onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
+    }
+
+    @Override
+    public void onWebLaunchClick() {
+
     }
 }
