@@ -10,12 +10,128 @@
 
 package com.adburke.java2_p1;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by aaronburke on 12/16/13.
  */
 public class BrowserFragment extends Fragment {
+
+    private BrowserListener listener;
+
+    public interface BrowserListener {
+        public void onFilterSelection(String selection);
+        public void onProductSelection(int index, String filterString, int filterIndex);
+        public void onQueryAll();
+
+    }
+
+    // Spinner variables
+    public static String[] mListItems;
+    public static Spinner selectionSpinner;
+
+    // Query All Button
+    public static Button queryAllBtn;
+
+
+    // List View
+    public static ListView resultsList;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        LinearLayout view = (LinearLayout) inflater.inflate(R.layout.api_browser, container, false);
+
+        mListItems = getResources().getStringArray(R.array.selection_array);
+
+        // Spinner
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, mListItems);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectionSpinner = (Spinner) view.findViewById(R.id.filterSpinner);
+        selectionSpinner.setAdapter(spinnerAdapter);
+        selectionSpinner.setEnabled(false);
+        selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position != 0 && Api_browser.spinnerIndex != selectionSpinner.getSelectedItemPosition()) {
+
+                    Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
+
+                    listener.onFilterSelection(parent.getItemAtPosition(position).toString());
+                    if (savedInstanceState != null) {
+                        Api_browser.spinnerIndex = selectionSpinner.getSelectedItemPosition();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // Button
+        queryAllBtn = (Button) view.findViewById(R.id.showAllBtn);
+        queryAllBtn.setEnabled(false);
+        queryAllBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                listener.onQueryAll();
+                selectionSpinner.setSelection(0);
+            }
+        });
+
+        // ListView
+        resultsList = (ListView) view.findViewById(R.id.resultsList);
+        resultsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                //Toast.makeText(mContext, "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
+
+                listener.onProductSelection(position, selectionSpinner.getSelectedItem().toString(), selectionSpinner.getSelectedItemPosition() );
+
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            listener = (BrowserListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " need to implement BrowserListener");
+        }
+
+    }
 
 
 }

@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Api_browser extends Activity {
+public class Api_browser extends Activity implements BrowserFragment.BrowserListener {
     static Context mContext;
     FileManager mFile;
     static String mJsonFile = "json_data.txt";
@@ -51,10 +51,8 @@ public class Api_browser extends Activity {
     // Query All Button
     public static Button queryAllBtn;
 
-    // Spinner variables
-    public static String[] mListItems;
     public static Spinner selectionSpinner;
-    public int spinnerIndex;
+    public static int spinnerIndex;
 
     // List View
     public static ListView resultsList;
@@ -65,16 +63,18 @@ public class Api_browser extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.api_browser);
+        setContentView(R.layout.browserfrag);
 
         // Initialize context
         mContext = this;
 
         writeStatus = false;
 
-        Boolean status = ConnectionStatus.getNetworkStatus(mContext);
+        selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
+        queryAllBtn = (Button)findViewById(R.id.showAllBtn);
+        resultsList = (ListView)findViewById(R.id.resultsList);
 
-        mListItems = getResources().getStringArray(R.array.selection_array);
+        Boolean status = ConnectionStatus.getNetworkStatus(mContext);
 
         // Check for spinner position so it does not fire when screen rotation occurs
         if (savedInstanceState != null) {
@@ -82,66 +82,6 @@ public class Api_browser extends Activity {
         } else {
             spinnerIndex = 0;
         }
-
-        // Spinner
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, mListItems);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
-        selectionSpinner.setAdapter(spinnerAdapter);
-        selectionSpinner.setEnabled(false);
-        selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position != 0 && spinnerIndex != selectionSpinner.getSelectedItemPosition()) {
-
-                    Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
-                    String queryStr = parent.getItemAtPosition(position).toString();
-                    Uri uriFilter = null;
-                    // Create uri to pass to onListUpdate based on the selection
-                    uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + queryStr);
-                    onListUpdate(uriFilter);
-                    if (savedInstanceState != null) {
-                        spinnerIndex = selectionSpinner.getSelectedItemPosition();
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        // Button
-        queryAllBtn = (Button)findViewById(R.id.showAllBtn);
-        queryAllBtn.setEnabled(false);
-        queryAllBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
-                selectionSpinner.setSelection(0);
-            }
-        });
-
-        // ListView
-        resultsList = (ListView)findViewById(R.id.resultsList);
-        resultsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                //Toast.makeText(mContext, "Click ListItem Number " + position, Toast.LENGTH_LONG).show();
-                // Create intent for new activity
-                Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
-                // Attach index data of selected product
-                productDetailActivity.putExtra("index", position);
-                productDetailActivity.putExtra("filterString", selectionSpinner.getSelectedItem().toString());
-                productDetailActivity.putExtra("filterIndex", selectionSpinner.getSelectedItemPosition());
-
-                startActivityForResult(productDetailActivity, 0);
-
-            }
-        });
 
         // Use saved instance data if available
         if (savedInstanceState != null) {
@@ -152,7 +92,7 @@ public class Api_browser extends Activity {
 
             if (productList != null) {
                 Log.i("SAVED INSTANCE", "Product list recreation");
-                ProductListAdapter adapter = new ProductListAdapter(this, productList, R.layout.list_row,
+                ProductListAdapter adapter = new ProductListAdapter(mContext, productList, R.layout.list_row,
                         new String[]{"productName", "vendor", "productPrice"}, new int[]{R.id.productName, R.id.vendor, R.id.productPrice});
                 // Add the adapter to the ListView
                 resultsList.setAdapter(adapter);
@@ -258,32 +198,6 @@ public class Api_browser extends Activity {
         selectionSpinner.setEnabled(true);
         queryAllBtn.setEnabled(true);
     }
-    // Extend SimpleAdapter to create zebra coloring on rows
-    public class ProductListAdapter extends SimpleAdapter {
-
-        public ProductListAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
-            super(context, data, resource, from, to);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            // Get reference to the row
-            View view = super.getView(position, convertView, parent);
-            // Check for odd or even to set alternate colors to the row background
-            if(position % 2 == 0){
-                if (view != null) {
-                    view.setBackgroundColor(Color.rgb(238, 233, 233));
-                }
-            }
-            else {
-                if (view != null) {
-                    view.setBackgroundColor(Color.rgb(255, 255, 255));
-                }
-            }
-            return view;
-        }
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -310,4 +224,28 @@ public class Api_browser extends Activity {
 
     }
 
+    @Override
+    public void onFilterSelection(String selection) {
+        Uri uriFilter = null;
+        // Create uri to pass to onListUpdate based on the selection
+        uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + selection);
+        onListUpdate(uriFilter);
+    }
+
+    @Override
+    public void onProductSelection(int index, String filterString, int filterIndex) {
+        // Create intent for new activity
+        Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
+        // Attach index data of selected product
+        productDetailActivity.putExtra("index", index);
+        productDetailActivity.putExtra("filterString", filterString);
+        productDetailActivity.putExtra("filterIndex", filterIndex);
+
+        startActivityForResult(productDetailActivity, 0);
+    }
+
+    @Override
+    public void onQueryAll() {
+        onListUpdate(CollectionProvider.JsonData.CONTENT_URI);
+    }
 }
