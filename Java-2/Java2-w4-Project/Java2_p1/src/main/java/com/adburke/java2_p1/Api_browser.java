@@ -42,8 +42,13 @@ import java.util.Map;
 
 public class Api_browser extends Activity implements BrowserFragment.BrowserListener, ProductDetailFragment.ProductDetailListener {
     static Context mContext;
+
+    // File writing variables
     FileManager mFile;
     static String mJsonFile = "json_data.txt";
+
+    // saved instance status
+    Bundle savedInstanceState;
 
     // Can be used to tell if the file has already been created on the device
     public static Boolean writeStatus;
@@ -225,17 +230,27 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
     }
 
     @Override
-    public void onFilterSelection(String selection) {
-        Uri uriFilter = null;
-        // Create uri to pass to onListUpdate based on the selection
-        uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + selection);
-        onListUpdate(uriFilter);
+    public void onFilterSelection(int position,String selection) {
+        if (position != 0 && spinnerIndex != selectionSpinner.getSelectedItemPosition()) {
+
+            Log.i("SPINNER SELECTION", selectionSpinner.getItemAtPosition(position).toString());
+
+            Uri uriFilter = null;
+            // Create uri to pass to onListUpdate based on the selection
+            uriFilter = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + selection);
+            onListUpdate(uriFilter);
+
+            if (savedInstanceState != null) {
+                spinnerIndex = selectionSpinner.getSelectedItemPosition();
+            }
+        }
     }
 
     @Override
     public void onProductSelection(int index, String filterString, int filterIndex) {
         ProductDetailFragment viewer = (ProductDetailFragment) getFragmentManager()
                 .findFragmentById(R.id.productdetail_fragment);
+        Log.i("onProductSelection", "Fired onProductSelection");
         if (viewer == null || !viewer.isInLayout()) {
             // Create intent for new activity
             Intent productDetailActivity = new Intent(mContext, ProductListDetail.class);
@@ -246,6 +261,15 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
 
             startActivityForResult(productDetailActivity, 0);
         } else {
+            Uri productUri;
+            // Create URI for product call to capture data
+            if (filterIndex == 0) {
+                productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/" + index);
+            } else {
+                productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + index);
+            }
+            Log.i("onProductSelection", "Fired view.updateProductFragment");
+            viewer.updateProductDetails(productUri);
 
         }
     }
@@ -256,7 +280,11 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
     }
 
     @Override
-    public void onWebLaunchClick() {
-
+    public void onWebLaunchClick(HashMap<String, String> productInfo) {
+        Intent intent;
+        intent = new Intent(Intent.ACTION_VIEW);
+        Uri webUri = Uri.parse(productInfo.get("productUrl"));
+        intent.setData(webUri);
+        startActivity(intent);
     }
 }

@@ -33,7 +33,7 @@ public class BrowserFragment extends Fragment {
     private BrowserListener listener;
 
     public interface BrowserListener {
-        public void onFilterSelection(String selection);
+        public void onFilterSelection(int position, String selection);
         public void onProductSelection(int index, String filterString, int filterIndex);
         public void onQueryAll();
 
@@ -67,16 +67,7 @@ public class BrowserFragment extends Fragment {
         selectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position != 0 && Api_browser.spinnerIndex != selectionSpinner.getSelectedItemPosition()) {
-
-                    Log.i("SPINNER SELECTION", parent.getItemAtPosition(position).toString());
-
-                    listener.onFilterSelection(parent.getItemAtPosition(position).toString());
-                    if (savedInstanceState != null) {
-                        Api_browser.spinnerIndex = selectionSpinner.getSelectedItemPosition();
-                    }
-                }
+                listener.onFilterSelection(position,parent.getItemAtPosition(position).toString());
             }
 
             @Override
