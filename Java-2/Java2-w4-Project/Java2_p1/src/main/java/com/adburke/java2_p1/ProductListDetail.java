@@ -28,12 +28,14 @@ public class ProductListDetail extends Activity implements ProductDetailFragment
     String filterString;
 
     Uri productUri;
+    String productUriString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailfrag);
 
+        ProductDetailFragment fragment = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.productdetail_fragment);
 
         // Capture incoming data
         Bundle incomingData = getIntent().getExtras();
@@ -48,8 +50,10 @@ public class ProductListDetail extends Activity implements ProductDetailFragment
             // Create URI for product call to capture data
             if (filterIndex == 0) {
                 productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/" + productIndex);
+                productUriString = "content://" + CollectionProvider.AUTHORITY + "/items/" + productIndex;
             } else {
                 productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + productIndex);
+                productUriString = "content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + productIndex;
             }
         }
 
@@ -63,8 +67,12 @@ public class ProductListDetail extends Activity implements ProductDetailFragment
                 Log.i("ProductListDetail", "NULL CURSOR AT: " + productUri.toString());
             }
 
-            ProductDetailFragment fragment = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.productdetail_fragment);
-
+            if (fragment != null) {
+                fragment.updateProductDetails(productUri);
+            }
+        } else {
+            productUriString = savedInstanceState.getString("productUri");
+            productUri = Uri.parse(productUriString);
             if (fragment != null) {
                 fragment.updateProductDetails(productUri);
             }
@@ -94,9 +102,10 @@ public class ProductListDetail extends Activity implements ProductDetailFragment
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
 
-//        if(productInfo != null && !productInfo.isEmpty()) {
-//            savedInstanceState.putSerializable("savedList", (Serializable) productInfo);
-//        }
+        if(productUri != null) {
+            savedInstanceState.putString("productUri", productUriString);
+        }
+        Log.i("ProductListDetail", "onSaveI fired");
 
     }
 
