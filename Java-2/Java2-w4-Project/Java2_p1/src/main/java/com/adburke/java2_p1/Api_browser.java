@@ -50,6 +50,9 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
     // saved instance status
     Bundle savedInstanceState;
 
+    ProductDetailFragment viewer;
+    public String productUriString;
+
     // Can be used to tell if the file has already been created on the device
     public static Boolean writeStatus;
 
@@ -75,15 +78,22 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
 
         writeStatus = false;
 
+        // Saved instance string for ProductDetail frag
+        productUriString = null;
+
         selectionSpinner = (Spinner)findViewById(R.id.filterSpinner);
         queryAllBtn = (Button)findViewById(R.id.showAllBtn);
         resultsList = (ListView)findViewById(R.id.resultsList);
 
         Boolean status = ConnectionStatus.getNetworkStatus(mContext);
 
+        // Get ProductDetail Fragment
+        viewer = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.productdetail_fragment);
+
         // Check for spinner position so it does not fire when screen rotation occurs
         if (savedInstanceState != null) {
             spinnerIndex = savedInstanceState.getInt("spinnerIndex");
+            productUriString = savedInstanceState.getString("productUriString");
         } else {
             spinnerIndex = 0;
         }
@@ -103,6 +113,14 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
                 resultsList.setAdapter(adapter);
                 selectionSpinner.setEnabled(true);
                 queryAllBtn.setEnabled(true);
+            if (viewer.isInLayout() && productUriString != null) {
+                Uri savedDetailUri;
+                if (savedInstanceState.getString("productUriString") != null) {
+                    savedDetailUri = Uri.parse(savedInstanceState.getString("productUriString"));
+                    viewer.updateProductDetails(savedDetailUri);
+                }
+            }
+
             }
         }
 
@@ -218,6 +236,11 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
         savedInstanceState.putBoolean("status", writeStatus);
         savedInstanceState.putInt("spinnerIndex", selectionSpinner.getSelectedItemPosition());
 
+        if (productUriString != null) {
+            savedInstanceState.putString("productUriString", productUriString);
+        }
+
+
         if(productList != null && !productList.isEmpty()) {
             savedInstanceState.putSerializable("savedList", (Serializable) productList);
         }
@@ -248,8 +271,6 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
 
     @Override
     public void onProductSelection(int index, String filterString, int filterIndex) {
-        ProductDetailFragment viewer = (ProductDetailFragment) getFragmentManager()
-                .findFragmentById(R.id.productdetail_fragment);
         Log.i("onProductSelection", "Fired onProductSelection");
         if (viewer == null || !viewer.isInLayout()) {
             // Create intent for new activity
@@ -265,8 +286,10 @@ public class Api_browser extends Activity implements BrowserFragment.BrowserList
             // Create URI for product call to capture data
             if (filterIndex == 0) {
                 productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/" + index);
+                productUriString = "content://" + CollectionProvider.AUTHORITY + "/items/" + index;
             } else {
                 productUri = Uri.parse("content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + index);
+                productUriString = "content://" + CollectionProvider.AUTHORITY + "/items/type/" + filterString + "/" + index;
             }
             Log.i("onProductSelection", "Fired view.updateProductFragment");
             viewer.updateProductDetails(productUri);
