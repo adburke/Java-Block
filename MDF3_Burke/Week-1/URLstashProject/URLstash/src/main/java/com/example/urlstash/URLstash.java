@@ -41,7 +41,7 @@ public class URLstash extends Activity {
         // Get the intent that started this activity
         Intent intent = getIntent();
 
-        // Pull out the html data from the intent
+        // Pull out the URL data from the intent
         Uri data = intent.getData();
         try {
             if (data != null) {
@@ -69,5 +69,6 @@ public class URLstash extends Activity {
             super.onBackPressed();
         }
     }
+
 
 }
