@@ -57,8 +57,17 @@ public class URLstash extends Activity {
             String url = incomingUrl.toString().replaceAll("(http://)","");
             urlEditText.setText(url);
         }
+    }
 
-
+    @Override
+    // Method to use the android back button for the WebView
+    public void onBackPressed() {
+        if(mainWebView.canGoBack()) {
+            mainWebView.goBack();
+        } else {
+            // System back instead of WebView back
+            super.onBackPressed();
+        }
     }
 
 }
