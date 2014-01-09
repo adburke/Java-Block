@@ -38,9 +38,9 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 // Perform action on click
 
-                String urlStr = editText.getText().toString();
+                String urlStr = "http://" + editText.getText().toString();
                 if (URLUtil.isValidUrl(urlStr)) {
-                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.vogella.com"));
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(urlStr));
                     startActivity(i);
                 }
 

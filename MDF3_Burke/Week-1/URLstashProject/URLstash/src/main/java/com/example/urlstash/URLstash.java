@@ -52,7 +52,8 @@ public class URLstash extends Activity {
         // Load the url in the WebView and set the EditText to display the url
         if (incomingUrl != null) {
             mainWebView.loadUrl(incomingUrl.toString());
-            urlEditText.setText(incomingUrl.toString());
+            String url = incomingUrl.toString().replaceAll("(http://)","");
+            urlEditText.setText(url);
         }
 
 
