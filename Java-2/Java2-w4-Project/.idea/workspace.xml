@@ -29,92 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d2f0f5f-17c4-4bed-9b92-b2f352ee26fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Java2-w3-Project/Java2_p1/Java2_p1.apk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/ic_launcher-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/ic_launcher-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/drawable-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/drawable-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/drawable-xxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/drawable-hdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/drawable-mdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/drawable-xhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/drawable-xxhdpi/ic_launcher.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/AndroidManifest.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/Android_Class_Work.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/copyright/Android_Class_Work.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/copyright/Android_Class_Work.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Java-1/Java1-W2-3-4/Java1_FinalProject/.idea/libraries/ComAndroidSupportAppcompatV71900_aar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/libraries/ComAndroidSupportAppcompatV71900_aar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/libraries/ComAndroidSupportAppcompatV71900_aar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/java/com/example/implicitexecute/MainActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/MapCapture.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/java/com/example/mapcapture/MapNoteActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/layout/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/layout/activity_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/build.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/values/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/values-w820dp/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/values/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/values-w820dp/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/layout/fragment_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/layout/fragment_main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/gradlew.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/gradlew" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/implicitExecute.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecuteProject.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/menu/main.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/menu/map_note.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/settings.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/settings.gradle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/values/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/MapCapture/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/implicitExecute/src/main/res/values/styles.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Java-1/Java1-W2-3-4/Java1_FinalProject/.idea/libraries/support_v4_19_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/libraries/support_v4_19_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/libraries/support_v4_19_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/MapCaptureProject/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/implicitExecuteProject/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="build.gradle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -189,13 +104,13 @@
       </file>
       <file leaf-file-name="api_browser.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/api_browser.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state line="31" column="12" selection-start="1076" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="840">
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -659,7 +574,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -896,6 +810,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -964,6 +879,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -989,19 +917,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1114,8 +1029,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1126" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1920" height="1126" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1139,8 +1054,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1168,13 +1083,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="136" column="28" selection-start="5010" selection-end="5010" vertical-scroll-proportion="0.85141903" vertical-offset="1530" max-vertical-offset="2175">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/values/strings.xml">
@@ -1199,43 +1114,43 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/productdetailfrag.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/browserfrag.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/browserfrag.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="11" selection-start="425" selection-end="425" vertical-scroll-proportion="0.45" vertical-offset="0" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout-land/browserfrag.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout-land/browserfrag.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/api_browser.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/api_browser.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="12" selection-start="1076" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="840">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/AndroidManifest.xml">
@@ -1266,16 +1181,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="61" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
+        <state line="294" column="39" selection-start="10924" selection-end="10944" vertical-scroll-proportion="1.0015949" vertical-offset="3242" max-vertical-offset="4245">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="294" column="39" selection-start="10924" selection-end="10944" vertical-scroll-proportion="1.0015949" vertical-offset="3242" max-vertical-offset="4245">
+        <state line="44" column="61" selection-start="1268" selection-end="1268" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
           <folding />
         </state>
       </provider>
