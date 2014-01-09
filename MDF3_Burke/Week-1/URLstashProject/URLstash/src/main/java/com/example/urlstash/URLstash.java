@@ -1,17 +1,22 @@
 package com.example.urlstash;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.webkit.URLUtil;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,7 +24,7 @@ import java.net.URL;
 
 public class URLstash extends Activity {
 
-    private WebView mainWebView;
+    private CustomWebView mainWebView;
     private URL incomingUrl;
     private EditText urlEditText;
 
@@ -35,11 +40,21 @@ public class URLstash extends Activity {
         // Get ref to editText
         urlEditText = (EditText) findViewById(R.id.urlEditText);
 
-        // Create and configure WebView
-        mainWebView = (WebView) findViewById(R.id.webView);
+        // Create and configure Custom WebView to provide swipe capabilities
+        LinearLayout layout = (LinearLayout) findViewById(R.id.container);
+        mainWebView = new CustomWebView(this);
+        layout.addView(mainWebView);
+
+
         WebSettings webSettings = mainWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        mainWebView.setWebViewClient(new WebViewClient());
+        mainWebView.setWebViewClient(new WebViewClient() {
+            // Listen for webview page changes and update the edit text to show the correct url
+            public void onPageFinished(WebView view, String url) {
+                String formatedUrl = url.replaceAll("(http://|https://)","");
+                urlEditText.setText(formatedUrl);
+            }
+        });
 
         // Get the intent that started this activity
         Intent intent = getIntent();
@@ -57,8 +72,6 @@ public class URLstash extends Activity {
         // Load the url in the WebView and set the EditText to display the url
         if (incomingUrl != null) {
             mainWebView.loadUrl(incomingUrl.toString());
-            String url = incomingUrl.toString().replaceAll("(http://)","");
-            urlEditText.setText(url);
         }
 
         // Wire up functionality to all of the buttons
@@ -66,7 +79,7 @@ public class URLstash extends Activity {
         webFwdBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                if(mainWebView.canGoForward()) {
+                if (mainWebView.canGoForward()) {
                     mainWebView.goForward();
                 }
             }
@@ -75,7 +88,7 @@ public class URLstash extends Activity {
         webBackBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                if(mainWebView.canGoBack()) {
+                if (mainWebView.canGoBack()) {
                     mainWebView.goBack();
                 }
             }
@@ -97,16 +110,37 @@ public class URLstash extends Activity {
 
     }
 
-    @Override
-    // Method to use the android back button for the WebView
-    public void onBackPressed() {
-        if(mainWebView.canGoBack()) {
-            mainWebView.goBack();
-        } else {
-            // System back instead of WebView back
-            super.onBackPressed();
-        }
-    }
+    class CustomWebView extends WebView {
+        Context context;
+        GestureDetector gestureDetect;
 
+        public CustomWebView(Context context) {
+            super(context);
+
+            this.context = context;
+            gestureDetect = new GestureDetector(context, gestureListener);
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent event) {
+            return gestureDetect.onTouchEvent(event);
+        }
+
+        GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
+            public boolean onDown(MotionEvent event) {
+                return true;
+            }
+
+            public boolean onFling(MotionEvent event1, MotionEvent event2, float distanceX, float distanceY) {
+                if (event1.getRawX() > event2.getRawX()) {
+                    Log.i("SWIPE", "SWIPE LEFT");
+                } else {
+                    Log.i("SWIPE", "SWIPE RIGHT");
+                }
+                return true;
+            }
+        };
+
+    }
 
 }
