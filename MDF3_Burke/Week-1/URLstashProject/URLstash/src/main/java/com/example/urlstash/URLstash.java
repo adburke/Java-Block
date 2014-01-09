@@ -107,6 +107,13 @@ public class URLstash extends Activity {
 
             }
         });
+        Button goBtn = (Button) findViewById(R.id.goBtn);
+        goBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                mainWebView.loadUrl("http://" + urlEditText.getText().toString());
+            }
+        });
 
     }
 

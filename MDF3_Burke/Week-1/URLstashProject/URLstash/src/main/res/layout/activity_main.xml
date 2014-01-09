@@ -23,9 +23,17 @@
         <EditText
             android:id="@+id/urlEditText"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
+            android:layout_width="0dip"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:singleLine = "true" />
+        <Button
+            android:id="@+id/goBtn"
+            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5px"
+            android:text="GO" />
 
     </LinearLayout>
     <LinearLayout
