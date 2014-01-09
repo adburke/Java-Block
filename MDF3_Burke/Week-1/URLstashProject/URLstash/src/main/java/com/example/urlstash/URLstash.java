@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.webkit.URLUtil;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.net.MalformedURLException;
@@ -57,6 +60,41 @@ public class URLstash extends Activity {
             String url = incomingUrl.toString().replaceAll("(http://)","");
             urlEditText.setText(url);
         }
+
+        // Wire up functionality to all of the buttons
+        Button webFwdBtn = (Button) findViewById(R.id.webFwdBtn);
+        webFwdBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                if(mainWebView.canGoForward()) {
+                    mainWebView.goForward();
+                }
+            }
+        });
+        Button webBackBtn = (Button) findViewById(R.id.webBackBtn);
+        webBackBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                if(mainWebView.canGoBack()) {
+                    mainWebView.goBack();
+                }
+            }
+        });
+        Button viewStashBtn = (Button) findViewById(R.id.viewStashBtn);
+        viewStashBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+
+            }
+        });
+        Button addStashBtn = (Button) findViewById(R.id.addStashBtn);
+        addStashBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+
+            }
+        });
+
     }
 
     @Override
