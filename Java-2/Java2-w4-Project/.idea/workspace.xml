@@ -30,7 +30,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d2f0f5f-17c4-4bed-9b92-b2f352ee26fe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/URLstash.java" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/URLstash.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" />
     </list>
     <ignored path="build.gradle.iws" />
     <ignored path=".idea/workspace.xml" />
