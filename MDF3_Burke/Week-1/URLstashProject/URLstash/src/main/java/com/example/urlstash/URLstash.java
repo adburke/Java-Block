@@ -121,6 +121,14 @@ public class URLstash extends Activity {
         Context context;
         GestureDetector gestureDetect;
 
+        // Keep up with fling state to check if we need to override or use the webview touch event
+        private boolean swipped;
+
+        // Some static variables to calculate gestures in onFling
+        private static final int SWIPE_MIN_DISTANCE = 120;
+        private static final int SWIPE_MAX_OFF_PATH = 250;
+        private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
         public CustomWebView(Context context) {
             super(context);
 
@@ -130,7 +138,13 @@ public class URLstash extends Activity {
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
-            return gestureDetect.onTouchEvent(event);
+            gestureDetect.onTouchEvent(event);
+            if (swipped) {
+                swipped = false;
+                return true;
+            } else {
+                return super.onTouchEvent(event);
+            }
         }
 
         GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
@@ -139,10 +153,23 @@ public class URLstash extends Activity {
             }
 
             public boolean onFling(MotionEvent event1, MotionEvent event2, float distanceX, float distanceY) {
-                if (event1.getRawX() > event2.getRawX()) {
-                    Log.i("SWIPE", "SWIPE LEFT");
-                } else {
-                    Log.i("SWIPE", "SWIPE RIGHT");
+                // Catch other gesture motions and let the webview handle them
+                if (Math.abs(event1.getY() - event1.getY()) > SWIPE_MAX_OFF_PATH) {
+                    return false;
+                }
+                // Catch the left and right swipes so we can override the onTouchEvent with our custom GestureDetector
+                if (event1.getX() - event2.getX() > SWIPE_MIN_DISTANCE && Math.abs(distanceX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (mainWebView.canGoForward()) {
+                        mainWebView.goForward();
+                    }
+                    Log.i("Swiped","swipe left");
+                    swipped = true;
+                } else if (event2.getX() - event1.getX() > SWIPE_MIN_DISTANCE && Math.abs(distanceX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (mainWebView.canGoBack()) {
+                        mainWebView.goBack();
+                    }
+                    Log.i("Swiped","swipe right");
+                    swipped = true;
                 }
                 return true;
             }
