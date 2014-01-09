@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebSettings;
@@ -43,9 +44,8 @@ public class URLstash extends Activity {
         // Create and configure Custom WebView to provide swipe capabilities
         LinearLayout layout = (LinearLayout) findViewById(R.id.container);
         mainWebView = new CustomWebView(this);
+        mainWebView.getSettings().setBuiltInZoomControls(true); // Forced zoom control to super
         layout.addView(mainWebView);
-
-
         WebSettings webSettings = mainWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mainWebView.setWebViewClient(new WebViewClient() {
@@ -173,6 +173,7 @@ public class URLstash extends Activity {
                 }
                 return true;
             }
+
         };
 
     }
