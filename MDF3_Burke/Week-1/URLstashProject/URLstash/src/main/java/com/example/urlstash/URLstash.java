@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
 
 import java.net.MalformedURLException;
@@ -35,6 +36,7 @@ public class URLstash extends Activity {
         mainWebView = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = mainWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        mainWebView.setWebViewClient(new WebViewClient());
 
         // Get the intent that started this activity
         Intent intent = getIntent();
