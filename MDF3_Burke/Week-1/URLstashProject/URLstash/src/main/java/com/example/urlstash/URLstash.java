@@ -13,7 +13,9 @@
 package com.example.urlstash;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,15 +36,27 @@ import java.net.URL;
 
 public class URLstash extends Activity {
 
+    Context mContext;
+
+    // UI variables
     private CustomWebView mainWebView;
     private URL incomingUrl;
     private EditText urlEditText;
+
+    // File manager variables
+    FileManager mFile;
+    Boolean writeStatus;
+    static String mStashFile = "stash_data.txt";
+
+    private String pageTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext = this;
 
         // Set incoming url to null for checking valid data
         incomingUrl = null;
@@ -62,6 +76,7 @@ public class URLstash extends Activity {
             public void onPageFinished(WebView view, String url) {
                 String formatedUrl = url.replaceAll("(http://|https://)","");
                 urlEditText.setText(formatedUrl);
+                pageTitle = view.getTitle();
             }
         });
 
@@ -113,7 +128,24 @@ public class URLstash extends Activity {
         addStashBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-
+                mFile = FileManager.getMinstance();
+                if (urlEditText.getText().toString() != "") {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                    builder.setMessage("Test Message")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // FIRE ZE MISSILES!
+                                }
+                            })
+                            .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User cancelled the dialog
+                                }
+                            });
+                    // Create the AlertDialog object and return it
+                    builder.show();
+                    //writeStatus = mFile.writeFile(mContext, mStashFile, pageTitle + "|" + "http://" + urlEditText.getText().toString() + ",");
+                }
             }
         });
         Button goBtn = (Button) findViewById(R.id.goBtn);
