@@ -1,3 +1,15 @@
+/*
+ * Project:		URLstash
+ *
+ * Package:		URLstash
+ *
+ * Author:		aaronburke
+ *
+ * Date:		1, 8, 2014
+ *
+ * Purpose: Displaying WebView of current URL and allowing to save(bookmark) it in your Stash
+ */
+
 package com.example.urlstash;
 
 import android.app.Activity;
@@ -8,7 +20,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebSettings;
@@ -17,8 +28,6 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
