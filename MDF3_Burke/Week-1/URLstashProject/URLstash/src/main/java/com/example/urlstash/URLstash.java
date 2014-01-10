@@ -30,6 +30,12 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -120,8 +126,22 @@ public class URLstash extends Activity {
         Button viewStashBtn = (Button) findViewById(R.id.viewStashBtn);
         viewStashBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                String readData = null;
                 // Perform action on click
+                Intent stashViewActivity = new Intent(mContext, StashViewActivity.class);
+                File file = mContext.getFileStreamPath(mStashFile);
+                if (file.exists()) {
 
+                    Log.i("FILE", "DOES EXIST");
+                    readData = mFile.readFile(mContext, mStashFile);
+                    if (readData != null) {
+                        stashViewActivity.putExtra("readData", readData);
+
+                    }
+                } else {
+                    Log.i("FILE", "DOES NOT EXIST");
+                }
+                startActivityForResult(stashViewActivity, 0);
             }
         });
         Button addStashBtn = (Button) findViewById(R.id.addStashBtn);
@@ -131,15 +151,25 @@ public class URLstash extends Activity {
                 mFile = FileManager.getMinstance();
                 if (urlEditText.getText().toString() != "") {
                     AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setMessage("Test Message")
+                    builder.setMessage("Save this page to your stash?")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // FIRE ZE MISSILES!
+                                    File file = mContext.getFileStreamPath(mStashFile);
+                                    if (file.exists()) {
+                                        Log.i("FILE", "DOES EXIST");
+                                        String readData = mFile.readFile(mContext, mStashFile);
+                                        JSONObject appendJson = appendToJson(pageTitle, "http://" + urlEditText.getText().toString(),readData);
+                                        writeStatus = mFile.writeFile(mContext, mStashFile, appendJson.toString());
+                                    } else {
+                                        Log.i("FILE", "DOES NOT EXIST");
+                                        JSONObject newJson = createNewJson(pageTitle, "http://" + urlEditText.getText().toString());
+                                        writeStatus = mFile.writeFile(mContext, mStashFile, newJson.toString());
+                                    }
                                 }
                             })
                             .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // User cancelled the dialog
+
                                 }
                             });
                     // Create the AlertDialog object and return it
@@ -156,6 +186,43 @@ public class URLstash extends Activity {
             }
         });
 
+    }
+
+    // Create starting json if file does not exist
+    public JSONObject createNewJson(String title, String url) {
+        JSONObject holder = new JSONObject();
+        JSONArray stashData = new JSONArray();
+        JSONObject urlData = new JSONObject();
+
+
+        try {
+            urlData.put("title", title);
+            urlData.put("url", url);
+            stashData.put(urlData);
+            holder.put("stashData",stashData);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("NEW JSON OBJECT", holder.toString());
+        return holder;
+    }
+    // Append to existing json
+    public JSONObject appendToJson(String title, String url, String object){
+        JSONObject holder = new JSONObject();
+        JSONObject urlData = new JSONObject();
+
+        try {
+            JSONObject existingObject = new JSONObject(object);
+            JSONArray stashData = existingObject.getJSONArray("stashData");
+            urlData.put("title", title);
+            urlData.put("url", url);
+            stashData.put(urlData);
+            holder.put("stashData",stashData);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("APPENDED JSON OBJECT", holder.toString());
+        return holder;
     }
 
     class CustomWebView extends WebView {
