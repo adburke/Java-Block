@@ -15,6 +15,7 @@ package com.example.urlstash;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -42,6 +44,7 @@ public class StashViewActivity extends Activity {
     ListView stashList;
     static String mStashFile = "stash_data.txt";
     Context mContext;
+    JSONArray stashData;
 
 
     @Override
@@ -53,6 +56,25 @@ public class StashViewActivity extends Activity {
         String readData = null;
 
         stashList = (ListView) findViewById(R.id.stashList);
+        stashList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String url;
+
+                    try {
+                        url = stashData.getJSONObject(position).getString("url");
+                        Intent URLstashActivity = new Intent(mContext, URLstash.class);
+                        URLstashActivity.putExtra("url", url);
+                        startActivityForResult(URLstashActivity, 0);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                Log.i("StashViewActivity", "Selected at position: " + position);
+            }
+        });
+
         Bundle incomingData = getIntent().getExtras();
         if (incomingData != null) {
             readData = incomingData.getString("readData");
@@ -62,7 +84,7 @@ public class StashViewActivity extends Activity {
         if (readData != null) {
             try {
                 JSONObject holder = new JSONObject(readData);
-                JSONArray stashData = holder.getJSONArray("stashData");
+                stashData = holder.getJSONArray("stashData");
                 Log.i("StashViewActivity", "stashData: " + stashData.toString());
                 onListUpdate(stashData);
             } catch (JSONException e) {
@@ -73,15 +95,16 @@ public class StashViewActivity extends Activity {
 
     }
 
-    public void onListUpdate(JSONArray stashData) {
+    public void onListUpdate(JSONArray newData) {
 
         ArrayList<String> titleList = new ArrayList<String>();
         
-        for (int i = 0, j = stashData.length(); i < j; i++) {
+        for (int i = 0, j = newData.length(); i < j; i++) {
             try {
-                titleList.add(stashData.getJSONObject(i).getString("title"));
-                ArrayAdapter listAdap = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, titleList);
-                stashList.setAdapter(listAdap);
+                titleList.add(newData.getJSONObject(i).getString("title"));
+                ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, titleList);
+                stashList.setAdapter(listAdapter);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

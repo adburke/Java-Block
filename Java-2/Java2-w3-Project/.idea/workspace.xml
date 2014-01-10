@@ -41,12 +41,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbc430b9-0b77-48c9-8340-e8676de7449d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/FileManager.java" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/FileManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/StashViewActivity.java" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/StashViewActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/URLstash.java" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/URLstash.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Java2-w4-Project/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Java2-w4-Project/.idea/workspace.xml" />
     </list>
     <ignored path="build.gradle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,11 +108,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Api_browser.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Api_browser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="219" column="28" selection-start="8184" selection-end="8196" vertical-scroll-proportion="0.0" vertical-offset="2490" max-vertical-offset="4095">
-              <folding />
+            <state line="97" column="94" selection-start="3089" selection-end="3089" vertical-scroll-proportion="0.7653061" vertical-offset="390" max-vertical-offset="4155">
+              <folding>
+                <element signature="e#4314#5191#0" expanded="true" />
+                <element signature="e#5180#5181#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,7 +132,7 @@
       <file leaf-file-name="ProductListDetail.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="35" selection-start="2959" selection-end="3041" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="3315">
+            <state line="102" column="35" selection-start="2959" selection-end="3041" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3315">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,10 +152,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectionProvider.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CollectionProvider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="87" selection-start="1894" selection-end="1894" vertical-scroll-proportion="-0.83090377" vertical-offset="1005" max-vertical-offset="4485">
+            <state line="51" column="87" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="4485">
               <folding />
             </state>
           </provider>
@@ -1054,7 +1055,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1126" extended-state="7" />
+    <frame x="0" y="22" width="1920" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1197,9 +1198,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="87" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="4485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/ProductListDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="35" selection-start="2959" selection-end="3041" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="3315">
+        <state line="102" column="35" selection-start="2959" selection-end="3041" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3315">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1208,15 +1216,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="28" selection-start="8184" selection-end="8196" vertical-scroll-proportion="0.0" vertical-offset="2490" max-vertical-offset="4095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/CollectionProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="87" selection-start="1894" selection-end="1894" vertical-scroll-proportion="-0.83090377" vertical-offset="1005" max-vertical-offset="4485">
-          <folding />
+        <state line="97" column="94" selection-start="3089" selection-end="3089" vertical-scroll-proportion="0.7653061" vertical-offset="390" max-vertical-offset="4155">
+          <folding>
+            <element signature="e#4314#5191#0" expanded="true" />
+            <element signature="e#5180#5181#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

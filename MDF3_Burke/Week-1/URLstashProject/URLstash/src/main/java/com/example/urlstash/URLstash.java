@@ -66,6 +66,7 @@ public class URLstash extends Activity {
 
         // Set incoming url to null for checking valid data
         incomingUrl = null;
+        String stashUrl = null; // incoming from StashViewActivity
 
         // Get ref to editText
         urlEditText = (EditText) findViewById(R.id.urlEditText);
@@ -94,14 +95,20 @@ public class URLstash extends Activity {
         try {
             if (data != null) {
                 incomingUrl = new URL(data.getScheme(), data.getHost(), data.getPath());
+                // Load the url in the WebView and set the EditText to display the url
+                 mainWebView.loadUrl(incomingUrl.toString());
+
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
-        // Load the url in the WebView and set the EditText to display the url
-        if (incomingUrl != null) {
-            mainWebView.loadUrl(incomingUrl.toString());
+
+        Bundle incomingData = getIntent().getExtras();
+        if (incomingData != null) {
+            stashUrl = incomingData.getString("url");
+            Log.i("URLstash Activity", "url: " + stashUrl);
+            mainWebView.loadUrl(stashUrl);
         }
 
         // Wire up functionality to all of the buttons
@@ -174,7 +181,7 @@ public class URLstash extends Activity {
                             });
                     // Create the AlertDialog object and return it
                     builder.show();
-                    //writeStatus = mFile.writeFile(mContext, mStashFile, pageTitle + "|" + "http://" + urlEditText.getText().toString() + ",");
+
                 }
             }
         });

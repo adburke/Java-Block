@@ -32,24 +32,15 @@
             android:layout_height="40dp"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="5px"
-            android:text="GO" />
+            android:layout_marginRight="5dp"
+            android:text="@string/go_btn" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal" >
-        <Button
-            android:id="@+id/webBackBtn"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="B" />
-        <Button
-            android:id="@+id/webFwdBtn"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="F" />
+        
         <Button
             android:id="@+id/viewStashBtn"
             android:layout_height="wrap_content"
