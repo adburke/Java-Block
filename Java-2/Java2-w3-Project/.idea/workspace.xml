@@ -41,7 +41,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbc430b9-0b77-48c9-8340-e8676de7449d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/StashViewActivity.java" afterPath="$PROJECT_DIR$/../../MDF3_Burke/Week-1/URLstashProject/URLstash/src/main/java/com/example/urlstash/StashViewActivity.java" />
     </list>
     <ignored path="build.gradle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,10 +105,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Api_browser.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Api_browser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="94" selection-start="3089" selection-end="3089" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="4155">
+            <state line="263" column="72" selection-start="10023" selection-end="10023" vertical-scroll-proportion="0.5721393" vertical-offset="2970" max-vertical-offset="4155">
               <folding>
                 <element signature="e#4314#5191#0" expanded="true" />
                 <element signature="e#5180#5181#0" expanded="true" />
@@ -149,10 +149,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gplaypatter_repeating.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gplaypatter_repeating.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/drawable-hdpi/gplaypatter_repeating.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="603">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
               <folding />
             </state>
           </provider>
@@ -1091,13 +1091,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1126" extended-state="7" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1920" height="1126" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14479166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14479166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1112,7 +1112,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28333333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28333333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963988" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1233,16 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="94" selection-start="3089" selection-end="3089" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="4155">
-          <folding>
-            <element signature="e#4314#5191#0" expanded="true" />
-            <element signature="e#5180#5181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/res/layout/product_detail.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1257,6 +1247,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="686">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java2_p1/src/main/java/com/adburke/java2_p1/Api_browser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="263" column="72" selection-start="10023" selection-end="10023" vertical-scroll-proportion="0.5721393" vertical-offset="2970" max-vertical-offset="4155">
+          <folding>
+            <element signature="e#4314#5191#0" expanded="true" />
+            <element signature="e#5180#5181#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

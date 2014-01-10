@@ -16,6 +16,7 @@ package com.example.urlstash;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,7 @@ import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +39,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class StashViewActivity extends Activity {
 
@@ -102,7 +105,7 @@ public class StashViewActivity extends Activity {
         for (int i = 0, j = newData.length(); i < j; i++) {
             try {
                 titleList.add(newData.getJSONObject(i).getString("title"));
-                ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, titleList);
+                StashListAdapter listAdapter = new StashListAdapter(mContext, android.R.layout.simple_list_item_1, android.R.id.text1, titleList);
                 stashList.setAdapter(listAdapter);
 
             } catch (JSONException e) {
@@ -112,6 +115,33 @@ public class StashViewActivity extends Activity {
 
         Log.i("StashViewActivity", "titleList = " + titleList.toString());
 
+    }
+
+    // Extend SimpleAdapter to create zebra coloring on rows
+    public class StashListAdapter extends ArrayAdapter {
+
+        public StashListAdapter(Context context, int resource, int textViewResourceId, List<String> objects) {
+            super(context, resource, textViewResourceId, objects);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            // Get reference to the row
+            View view = super.getView(position, convertView, parent);
+            // Check for odd or even to set alternate colors to the row background
+            if(position % 2 == 0){
+                if (view != null) {
+                    view.setBackgroundColor(Color.rgb(238, 233, 233));
+                }
+            }
+            else {
+                if (view != null) {
+                    view.setBackgroundColor(Color.rgb(255, 255, 255));
+                }
+            }
+            return view;
+        }
     }
 
 
