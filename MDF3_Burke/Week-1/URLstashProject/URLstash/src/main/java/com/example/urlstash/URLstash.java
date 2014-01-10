@@ -112,24 +112,6 @@ public class URLstash extends Activity {
         }
 
         // Wire up functionality to all of the buttons
-        Button webFwdBtn = (Button) findViewById(R.id.webFwdBtn);
-        webFwdBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                if (mainWebView.canGoForward()) {
-                    mainWebView.goForward();
-                }
-            }
-        });
-        Button webBackBtn = (Button) findViewById(R.id.webBackBtn);
-        webBackBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                if (mainWebView.canGoBack()) {
-                    mainWebView.goBack();
-                }
-            }
-        });
         Button viewStashBtn = (Button) findViewById(R.id.viewStashBtn);
         viewStashBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
